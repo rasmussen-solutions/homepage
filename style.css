@@ -42,7 +42,7 @@ a{
 	margin-top:1px;
 }
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
 textarea:-webkit-autofill,
@@ -53,7 +53,7 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
 select:-webkit-autofill:active{
-  transition: background-color 50000s ease-in-out 0s, color 5000s ease-in-out 0s;	
+  transition: background-color 50000s ease-in-out 0s, color 5000s ease-in-out 0s;
 }
 p.form-messege{
     margin-top: 8px;
@@ -2731,7 +2731,7 @@ p.form-messege{
      transition: .5s;
 }
  .witr_single_team:hover .witr_team_content_car{
-     left: 30px 
+     left: 30px
 }
  .witr_team_content_car span {
      font-size: 16px;
@@ -3855,7 +3855,7 @@ p.form-messege{
 }
  .test-part ul li {
      display: inline-block;
-     padding-top: 0px 
+     padding-top: 0px
 }
  .test-part p {
 }
@@ -4332,7 +4332,7 @@ p.form-messege{
      width: 33px;
      height: 33px !important;
      border-radius: 50% !important;
-     margin-right: 5px 
+     margin-right: 5px
 }
  .witr_post_Author .nameAuthor{
      font-size: 20px;
@@ -6805,7 +6805,7 @@ p.form-messege{
 }
  .checkbox_witr span {
      color: #fff;
-     font-size: 15px 
+     font-size: 15px
 }
  .mc4wp-alert.mc4wp-error a, .mc4wp-alert.mc4wp-error p{
      color: #fff;
@@ -7393,14 +7393,14 @@ p.form-messege{
      */
     /* z-index: 999;
      */
-    /* 
+    /*
 }
  */
 /* .no-logo-sr .em-quearys-top.msin-menu-search .em-quearys-inner {
      */
     /* top: 70px;
      */
-    /* 
+    /*
 }
  */
  .no-logo-sr .solutech_menu ul {
@@ -11189,6 +11189,9 @@ p.form-messege{
      width:63%;
 }
  .witr_swiper_content{
+     background-color: rgb(0, 0, 0, 0.4);
+     border-radius: 5px;
+     padding: 20px;
      position: relative;
      top: 50%;
      transform: translateY(-50%);
@@ -11411,7 +11414,7 @@ p.form-messege{
 }
  .solutech_serivce_area {
      padding:95px 0px 70px;
-     background:#00247E08;
+     /*background:#00247E08;*/
 }
  .serivce_bg .witr_feature_btn2 a {
      color: #fff;
@@ -11592,7 +11595,7 @@ p.form-messege{
      background-position: center center;
      background-repeat: no-repeat;
      background-size: cover;
-     padding:95px 0px 70px;
+     padding:240px 0px 70px;
      position:relative;
 }
  .solutech_testimonial_bg_area:before {
@@ -11802,7 +11805,7 @@ p.form-messege{
      background-color: #FFFFFF;
      border-style: solid;
      border-width: 0px 0px 0px 0px;
-     color:#0c5adb 
+     color:#0c5adb
 }
  .swiper2 .slider_btn .witr_btn.active:hover {
      background: #0c5adb;

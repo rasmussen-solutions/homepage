@@ -1292,6 +1292,7 @@
     }
      .solutech_project_area {
          padding: 100px 0px 100px;
+         background:#00247E08
     }
      .toggle_pslide {
          display: inherit;
@@ -2690,4 +2691,3 @@
          display:none;
     }
 }
- 
