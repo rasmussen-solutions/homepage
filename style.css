@@ -11630,31 +11630,6 @@ p.form-messege{
  .witr_brand_area {
      margin-top:0px;
 }
- .witr_button_bg{
-     background-image: url(assets/images/b4.jpg);
-     padding: 0px 0px 66px;
-     background-size: cover;
-     position:relative;
-}
- .witr_button_bg:before {
-     content: "";
-     position: absolute;
-     left: 0px;
-     top: 0px;
-     width: 100%;
-     height: 100%;
-     background:linear-gradient(180deg, #0c5adb80 0%, #00247e80 100%);
-}
- .witr_button_bg .witr_button_area {
-     text-align: center;
-}
- .witr_button_bg .witr_bbtn {
-     color: #FFFFFF;
-     border-style: solid;
-     border-color: #FFFFFF;
-     margin: 80px 0px 0px 0px;
-     padding: 10px 20px 10px 20px;
-}
  .brand_bg{
      background:#fff;
      padding:60px 0px 60px 0px;
@@ -11819,26 +11794,6 @@ p.form-messege{
 }
  .solutech_counter2_area {
      padding: 100px 0px 70px;
-}
-/* solutech_counter_bg_area */
- .solutech_counter_bg_area {
-     padding: 100px 0px 70px;
-     background-image: url(assets/images/blog8.jpg);
-     background-position: center center;
-     background-repeat: no-repeat;
-     position: relative;
-     background-size: cover;
-	     z-index: 1;
-}
- .solutech_counter_bg_area:before {
-     position: absolute;
-     content: "";
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background:#00247ecf;
-	     z-index: -1;
 }
  .white .witr_custom_icon i, .white .witr_counter_text h4, .white .witr_counter_text h3, .white .witr_counter_text span{
      color:#fff;
@@ -12072,21 +12027,6 @@ p.form-messege{
 }
  .solutech_team_area.team_page .all_color_team span {
      color: #fff;
-}
- .witr_service_back_3d.bekend_bg {
-     background-image: url(assets/images/team-01.jpg);
-     background-position: center center;
-     background-size: cover;
-}
- .witr_service_back_3d.bekend_bg2 {
-     background-image: url(assets/images/team-02.jpg);
-     background-position: center center;
-     background-size: cover;
-}
-.witr_service_back_3d.bekend_bg3 {
-     background-image: url(assets/images/team-03.jpg);
-     background-position: center center;
-     background-size: cover;
 }
  .service_3d .witr_service_back_3d:before {
      background:#00247eAB;
@@ -12502,12 +12442,6 @@ p.form-messege{
 }
  .solutech_team_area.team_page {
      padding: 90px 0px 70px;
-}
- .solutech_make_service_area.make_service2 {
-     background-image: url(assets/images/blog7.jpg);
-}
- .solutech_make_service_area.make_service2:before {
-     background: #222429cc;
 }
  .solutech_about_area.choose_page {
      padding: 100px 0px 90px;
