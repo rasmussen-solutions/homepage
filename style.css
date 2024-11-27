@@ -8530,7 +8530,6 @@ p.form-messege{
  .witrfm_area {
      background-repeat: no-repeat;
      background-position: center center;
-     background-image: url(assets/images/blog9.jpg);
      background-size: cover;
      position:relative;
 	 z-index: 1;
@@ -12014,10 +12013,8 @@ p.form-messege{
  .choose .button2 .witr_btn {
      padding: 15px 50px;
 }
-/* solutech_make_service_area */
  .solutech_make_service_area {
      padding:100px 0px 80px;
-     background-image: url(assets/images/blog9.jpg);
      background-position: center center;
      background-repeat: no-repeat;
      background-size: cover;
