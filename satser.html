@@ -203,6 +203,28 @@
 }
 #rs-sats .sd-cta .sd-go:hover{background:var(--rs-blue-soft);color:var(--rs-deep);text-decoration:none}
 #rs-sats .sd-cta .sd-fine{font-size:.93rem;color:rgba(255,255,255,.75);margin:14px 0 0}
+#rs-sats .sd-facts{border:1px solid var(--rs-line);background:var(--rs-soft);overflow:hidden;margin:6px 0 0}
+#rs-sats .sd-fact{width:25%;float:left;padding:18px 20px;border-right:1px solid var(--rs-line)}
+#rs-sats .sd-fact:last-child{border-right:0}
+#rs-sats .sd-fact dt{
+	font-family:var(--rs-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+	color:var(--rs-ink3);margin-bottom:6px;font-weight:400;
+}
+#rs-sats .sd-fact dd{margin:0;font-family:var(--rs-cond);font-weight:600;font-size:1.12rem;color:var(--rs-ink);line-height:1.25}
+#rs-sats .sd-fact dd.open{color:var(--rs-warn)}
+@media(max-width:767px){#rs-sats .sd-fact{width:50%;border-bottom:1px solid var(--rs-line)}}
+@media(max-width:479px){#rs-sats .sd-fact{width:100%;border-right:0}}
+#rs-sats .sd-status{
+	border-left:4px solid var(--rs-warn);background:var(--rs-warn-soft);
+	padding:15px 18px;margin:22px 0 0;font-size:.98rem;color:var(--rs-ink2);
+}
+#rs-sats .sd-status b{color:var(--rs-warn)}
+#rs-sats .sd-found{border:1px solid var(--rs-line);background:var(--rs-bg);padding:0;margin-top:4px}
+#rs-sats .sd-found li{
+	padding:16px 20px;border-bottom:1px solid var(--rs-line2);font-size:.99rem;color:var(--rs-ink2);line-height:1.55;
+}
+#rs-sats .sd-found li:last-child{border-bottom:0}
+#rs-sats .sd-found b{display:block;color:var(--rs-ink);font-family:var(--rs-cond);font-size:1.15rem;font-weight:600;margin-bottom:4px}
 #rs-sats .sd-sign{padding-top:28px;font-size:.95rem;color:var(--rs-ink3)}
 #rs-sats .sd-sign b{color:var(--rs-ink);font-family:var(--rs-cond);font-size:1.1rem;font-weight:600;display:block}
 </style>
@@ -297,6 +319,8 @@
 					<ul>
 						<li><a href="index.html">Forside</a></li>
 						<li><i class="fas fa-angle-right"></i></li>
+						<li><a href="index.html#project">Projekter</a></li>
+						<li><i class="fas fa-angle-right"></i></li>
 						<li>satsregisteret</li>
 					</ul>
 				</div>
@@ -319,10 +343,26 @@
 			<p class="sd-lede" style="font-size:1.06rem">
 				Så skal mesteren ingenting gøre. Lønnen er bare rigtig.
 			</p>
+
+			<dl class="sd-facts">
+				<div class="sd-fact"><dt>Branche</dt><dd>Malerfaget</dd></div>
+				<div class="sd-fact"><dt>Udfordringen</dt><dd>Satser tastes ind manuelt hos hvert medlem</dd></div>
+				<div class="sd-fact"><dt>Status</dt><dd class="open">Oplæg — ikke bygget</dd></div>
+				<div class="sd-fact"><dt>Prototype</dt><dd>Klikbar, længere nede</dd></div>
+			</dl>
+
+			<div class="sd-status">
+				<b>Det her er ikke en kundecase.</b> Ingen har bestilt det, og der er ikke
+				indgået nogen aftale. Det er en idé, vi fik ude hos en kunde, og som vi har
+				arbejdet nok på til at kunne vise, hvad den ville gå ud på. Vi lægger den op,
+				fordi det er sådan, vi normalt griber en opgave an: forstå problemet, tjekke
+				fakta, bygge noget man kan klikke på — og først derefter spørge, om det er
+				værd at lave.
+			</div>
 		</div>
 
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Hvor idéen kommer fra</div>
+			<div class="sd-eyebrow">Hvad vi hørte</div>
 			<h2 class="sd-h">Tiden går med overenskomsten, ikke med lønnen</h2>
 			<p>
 				En malermester satte ord på det: hans tidsrøver er ikke at køre løn. Det er at
@@ -341,7 +381,48 @@
 		</div>
 
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Idéen</div>
+			<div class="sd-eyebrow">Hvad vi fandt</div>
+			<h2 class="sd-h">Fem ting, der gjorde problemet større, end det lød</h2>
+			<p>
+				Før vi tegnede noget, læste vi os ind på maleroverenskomsten og de offentligt
+				tilgængelige satsoversigter. Fem ting overraskede os — og de er tilsammen
+				grunden til, at det her ikke bare er et regneark, nogen kunne have lavet.
+			</p>
+			<ul class="sd-found">
+				<li>
+					<b>Satserne deler ikke ikrafttrædelsesdato</b>
+					På tværs af de sidste to overenskomstperioder træder ændringer i kraft
+					1/6-2023, 1/1-2024, 1/3-2024, 1/5-2025, 1/3-2026 og 1/3-2027. Det er
+					præcis den slags detalje, et menneske taber, og en maskine ikke gør.
+				</li>
+				<li>
+					<b>Faget er et minimallønsområde</b>
+					Et satsregister leverer altså ikke “lønnen”. Det leverer gulvet, tillæggene,
+					pensionen og SH-satsen — den lokalt aftalte løn ligger ovenpå. Den grænse
+					skal være helt skarp, ellers lover organisationen mere, end den kan holde.
+				</li>
+				<li>
+					<b>Lærlingens kalender og overenskomstens kalender følges aldrig ad</b>
+					Lærlingen rykker løntrin på sin egen dato. Organisationen regulerer på sin.
+					Et almindeligt lærlingeforløb ender derfor med langt flere satsskift, end
+					man skulle tro — det kan man prøve længere nede.
+				</li>
+				<li>
+					<b>Et forlig kan lande efter, det er trådt i kraft</b>
+					Så skal der reguleres bagud og efterbetales. Det er den slags, en mester i
+					dag fanger med en kalenderpåmindelse — hvis han husker at sætte den.
+				</li>
+				<li>
+					<b>Arbejdet bliver allerede lavet — bare flere gange</b>
+					Lønbureauerne vedligeholder de samme branchesatser hver for sig, inde i
+					deres egne systemer. Der findes altså allerede en efterspørgsel. Den bliver
+					bare dækket af afskrifter i stedet for af en kilde.
+				</li>
+			</ul>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Hvad vi ville bygge</div>
 			<h2 class="sd-h">Organisationen bliver stedet, satserne kommer fra</h2>
 			<p>
 				Tænk på, hvordan en bank ikke selv sidder og taster dagens valutakurs ind. Den
@@ -360,7 +441,7 @@
 		</div>
 
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Sådan ville det virke</div>
+			<div class="sd-eyebrow">Hvordan det ville virke</div>
 			<h2 class="sd-h">Tre skridt</h2>
 			<div class="sd-steps">
 				<div class="sd-step">
@@ -399,8 +480,8 @@
 
 	<div class="sd-wide">
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Prøv det</div>
-			<h2 class="sd-h">Sådan ville det opføre sig</h2>
+			<div class="sd-eyebrow">Hvad der findes i dag</div>
+			<h2 class="sd-h">En prototype, man kan klikke på</h2>
 			<p style="max-width:74ch">
 				Herunder kører en prøveudgave direkte i siden. Der er ingen maskine bag —
 				tallene er lagt ind i hånden, så du kan se, hvordan det ville føles at bruge.
@@ -535,11 +616,11 @@
 		</div>
 
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Hvad det betyder</div>
-			<h2 class="sd-h">For organisationen, og for medlemmerne</h2>
+			<div class="sd-eyebrow">Hvad det ville kræve</div>
+			<h2 class="sd-h">Hvad der ville komme ud af det — og hvad det ville koste</h2>
 			<div class="sd-cols">
 				<div class="sd-col">
-					<h3>Hvad I får ud af det</h3>
+					<h3>Hvad organisationen ville få</h3>
 					<ul>
 						<li>Et medlemsgode, der virker ved hver eneste lønkørsel — ikke kun når nyhedsbrevet bliver læst.</li>
 						<li>Et medlemskab, der er svært at sige op, fordi det gør lønnen rigtig helt af sig selv.</li>
@@ -549,7 +630,7 @@
 					</ul>
 				</div>
 				<div class="sd-col">
-					<h3>Hvad det kræver af jer</h3>
+					<h3>Hvad det ville kræve</h3>
 					<ul>
 						<li>At en overenskomstkonsulent er med til at bestemme, hvordan satserne skal skrives op. Det er dér, fagkundskaben ligger.</li>
 						<li>At to personer står for det løbende: én taster ind, en anden godkender.</li>
@@ -567,12 +648,18 @@
 		</div>
 
 		<div class="sd-sec">
-			<div class="sd-eyebrow">Næste skridt</div>
-			<h2 class="sd-h">Tyve minutter</h2>
+			<div class="sd-eyebrow">Hvor den står nu</div>
+			<h2 class="sd-h">Den venter på en, der kender faget</h2>
 			<p>
-				En snak med en, der kender overenskomsten. De kigger på demoen og siger, hvor vi har
-				misforstået faget — og det har vi sikkert flere steder. Bagefter ved vi, om der er
-				noget her. Siger de nej, er det også et fint svar.
+				Næste skridt er ikke at bygge noget. Det er tyve minutter med en
+				overenskomstkonsulent, der kigger på prototypen og siger, hvor vi har misforstået
+				faget — og det har vi sikkert flere steder. Først derefter giver det mening at
+				tale om, hvad det ville koste at lave rigtigt.
+			</p>
+			<p>
+				Sidder du i en arbejdsgiverorganisation og synes, det lyder som noget, I selv
+				render ind i, hører vi gerne fra dig. Og synes du det er en dårlig idé, hører vi
+				også gerne hvorfor — det er billigere at få at vide nu end senere.
 			</p>
 			<div class="sd-sign">
 				<b>Emil Rasmussen</b>
