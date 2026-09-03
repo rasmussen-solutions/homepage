@@ -309,7 +309,7 @@
 
 	<div class="sd-wrap">
 		<div class="sd-sec" style="padding-top:46px">
-			<div class="sd-eyebrow">Et forslag til Danske Malermestre</div>
+			<div class="sd-eyebrow">Arbejdscase · Malerfaget</div>
 			<h2 class="sd-h">Satser, der passer sig selv</h2>
 			<p class="sd-lede">
 				Når en overenskomst er forhandlet, sidder hver enkelt mester og taster satserne
@@ -485,14 +485,14 @@
 					<div class="sd-ctrl">
 						<div class="sd-f">
 							<label for="d3">CVR-nummer</label>
-							<input type="text" id="d3" value="61834710" maxlength="8" inputmode="numeric">
+							<input type="text" id="d3" value="10000001" maxlength="8" inputmode="numeric">
 						</div>
 					</div>
 					<div class="sd-quick">
 						<span class="sd-ql">Prøv</span>
-						<button class="sd-chip" data-cvr="61834710">Et medlem</button>
-						<button class="sd-chip" data-cvr="42296244">Ikke medlem</button>
-						<button class="sd-chip" data-cvr="38112233">Meldt ud i 2025</button>
+						<button class="sd-chip" data-cvr="10000001">Et medlem</button>
+						<button class="sd-chip" data-cvr="30000003">Ikke medlem</button>
+						<button class="sd-chip" data-cvr="20000002">Meldt ud i 2025</button>
 					</div>
 					<div id="r3"></div>
 				</div>
@@ -502,9 +502,9 @@
 				<div class="sd-honest">
 					<h3>Det skal du vide om tallene</h3>
 					<p>
-						<strong>Kronebeløbene er fundet på.</strong> Vi har ikke Danske Malermestres
+						<strong>Kronebeløbene er fundet på.</strong> Vi har ikke en organisations faktiske
 						forhandlede timesatser, og det er bedre at vise en rigtig form med forkerte tal
-						end omvendt.
+						end omvendt. Også CVR-numrene i demoen er opdigtede.
 					</p>
 					<p>
 						<strong>En del af det er derimod rigtigt</strong>, og det er tjekket efter:
@@ -523,7 +523,7 @@
 			<div class="sd-cta">
 				<h2>Vil du prøve med jeres egne tal?</h2>
 				<p>
-					Det er den rigtige prøve. Skriv Danske Malermestres virkelige satser ind, og se
+					Det er den rigtige prøve. Skriv jeres egne virkelige satser ind, og se
 					om maskinen regner det ud, som I selv ville. Rammer den rigtigt, passer idéen.
 					Rammer den forkert, har vi misforstået faget — og det er også værd at vide.
 				</p>
@@ -671,8 +671,8 @@
 
 	/* medlemstjek — kun til illustration af, at adgangen følger medlemskabet */
 	var MEMBERS = {
-		"61834710": { name: "Danske Malermestre", status: "aktiv" },
-		"38112233": { name: "Nordvest Malerfirma ApS (fiktiv)", status: "udmeldt", until: "2025-06-30" }
+		"10000001": { name: "Malerfirmaet Eksempel A/S", status: "aktiv" },
+		"20000002": { name: "Nordvest Maler ApS", status: "udmeldt", until: "2025-06-30" }
 	};
 
 	/* faneblade */
@@ -788,7 +788,7 @@
 			var ver = S.versionAt(state, TODAY);
 			var svend = S.rateByRole(state, "svend");
 			r3.innerHTML = '<div class="sd-verdict yes"><div class="vh">Satserne udleveres</div>' +
-				"<p>" + S.esc(m.name) + " er medlem. Virksomhedens system får de satser, der er" +
+				"<p>" + S.esc(m.name) + " er medlem af organisationen. Virksomhedens system får de satser, der er" +
 				" gældende i dag" +
 				(ver && svend ? " — lige nu en mindstebetaling på " +
 					S.fmt(S.valueAt(state, svend, ver.id), "kr/time") + " i timen for en svend." : ".") +
