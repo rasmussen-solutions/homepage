@@ -1,0 +1,823 @@
+<!DOCTYPE HTML>
+<html lang="da-DK">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Satsregisteret — Rasmussen Solutions</title>
+	<meta name="description" content="Et forslag til, hvordan en arbejdsgiverorganisation kan udstille sine forhandlede overenskomstsatser som data, medlemmernes egne systemer henter automatisk.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="venobox/venobox.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/plugin_theme_css.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+
+<style>
+/* Alt herunder er scopet til #rs-sats, så det ikke kolliderer med temaets CSS. */
+#rs-sats{
+	--rs-blue:#0c5adb;
+	--rs-deep:#00247e;
+	--rs-ink:#272727;
+	--rs-ink2:#5a6270;
+	--rs-ink3:#8f8f8f;
+	--rs-line:#e2e6ee;
+	--rs-line2:#eef1f6;
+	--rs-bg:#ffffff;
+	--rs-soft:#f6f8fc;
+	--rs-blue-soft:#e7effc;
+	--rs-warn:#a8452f;
+	--rs-warn-soft:#fbeee9;
+	--rs-chalk:#fdf4dc;
+	--rs-ok:#12704a;
+	--rs-ok-soft:#e4f2ea;
+	--rs-sans:'Barlow',-apple-system,'Segoe UI',Arial,sans-serif;
+	--rs-cond:'Barlow Condensed','Barlow',Arial,sans-serif;
+	--rs-mono:'SFMono-Regular',Menlo,Consolas,monospace;
+
+	font-family:var(--rs-sans);
+	color:var(--rs-ink);
+	font-size:17px;
+	line-height:1.65;
+	background:var(--rs-bg);
+	padding:0 0 70px;
+}
+/* nulstil hvad Bootstrap 3 / temaet ellers pålægger */
+#rs-sats *{box-sizing:border-box}
+#rs-sats table{width:100%;max-width:none;margin:0;background:transparent;border-collapse:collapse}
+#rs-sats th,#rs-sats td{border:0}
+#rs-sats input,#rs-sats select,#rs-sats button{
+	height:auto;margin:0;box-shadow:none;font-family:var(--rs-sans);border-radius:0;
+}
+#rs-sats ul{list-style:none;margin:0;padding:0}
+#rs-sats p{margin:0 0 18px;color:var(--rs-ink2)}
+#rs-sats h2,#rs-sats h3,#rs-sats h4{font-family:var(--rs-cond);color:var(--rs-ink);margin:0;text-transform:none;line-height:1.15}
+#rs-sats a{color:var(--rs-blue)}
+
+#rs-sats .sd-wrap{max-width:820px;margin:0 auto;padding:0 18px}
+#rs-sats .sd-wide{max-width:1100px;margin:0 auto;padding:0 18px}
+
+#rs-sats .sd-lede{font-size:1.24rem;line-height:1.55;color:var(--rs-ink2);margin-bottom:16px}
+#rs-sats .sd-lede strong{color:var(--rs-ink);font-weight:600}
+#rs-sats .sd-sec{padding:40px 0;border-bottom:1px solid var(--rs-line2)}
+#rs-sats .sd-sec:last-child{border-bottom:0}
+#rs-sats .sd-eyebrow{
+	font-family:var(--rs-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+	color:var(--rs-blue);margin-bottom:12px;
+}
+#rs-sats h2.sd-h{font-size:2rem;letter-spacing:.01em;margin-bottom:18px}
+#rs-sats h3.sd-h3{font-size:1.2rem;margin-bottom:8px;font-family:var(--rs-sans);font-weight:700}
+#rs-sats .sd-pull{
+	font-family:var(--rs-cond);font-size:1.5rem;line-height:1.3;color:var(--rs-ink);
+	border-left:4px solid var(--rs-blue);padding:6px 0 6px 22px;margin:0 0 24px;
+}
+
+/* trin */
+#rs-sats .sd-steps{display:block}
+#rs-sats .sd-step{
+	display:table;width:100%;background:var(--rs-bg);
+	border:1px solid var(--rs-line);border-bottom:0;
+}
+#rs-sats .sd-step:last-child{border-bottom:1px solid var(--rs-line)}
+#rs-sats .sd-step > div{display:table-cell;vertical-align:top}
+#rs-sats .sd-step-n{
+	width:88px;font-family:var(--rs-cond);font-weight:700;font-size:2.4rem;
+	color:var(--rs-blue);padding:22px 0 22px 24px;line-height:1;
+}
+#rs-sats .sd-step-b{padding:22px 24px}
+#rs-sats .sd-step-b p{margin:0;font-size:1rem}
+#rs-sats .sd-step-who{
+	font-family:var(--rs-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+	color:var(--rs-ink3);margin-bottom:6px;
+}
+
+/* demo */
+#rs-sats .sd-demo{border:1px solid var(--rs-line);background:var(--rs-bg);box-shadow:0 10px 34px -20px rgba(12,90,219,.5)}
+#rs-sats .sd-demo-top{
+	padding:14px 18px;border-bottom:1px solid var(--rs-line);background:var(--rs-soft);
+	display:block;overflow:hidden;
+}
+#rs-sats .sd-demo-title{font-family:var(--rs-cond);font-weight:600;font-size:1.1rem;float:left}
+#rs-sats .sd-demo-flag{
+	float:right;font-family:var(--rs-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+	color:var(--rs-warn);background:var(--rs-warn-soft);border:1px solid var(--rs-warn);padding:4px 10px;
+}
+#rs-sats .sd-tabs{border-bottom:1px solid var(--rs-line);overflow-x:auto;white-space:nowrap;background:var(--rs-bg)}
+#rs-sats .sd-tab{
+	display:inline-block;background:none;border:0;border-bottom:3px solid transparent;
+	font-family:var(--rs-cond);font-weight:600;font-size:1.05rem;color:var(--rs-ink3);
+	padding:13px 20px;cursor:pointer;
+}
+#rs-sats .sd-tab:hover{color:var(--rs-ink2)}
+#rs-sats .sd-tab[aria-selected="true"]{color:var(--rs-blue);border-bottom-color:var(--rs-blue)}
+#rs-sats .sd-tab:focus{outline:2px solid var(--rs-blue);outline-offset:-3px}
+#rs-sats .sd-panel{padding:24px 22px}
+#rs-sats .sd-say{font-size:1rem;color:var(--rs-ink2);margin-bottom:20px}
+
+#rs-sats .sd-ctrl{margin-bottom:14px}
+#rs-sats .sd-f{display:inline-block;vertical-align:bottom;margin:0 18px 10px 0}
+#rs-sats .sd-f label{
+	display:block;font-family:var(--rs-mono);font-size:10px;letter-spacing:.12em;
+	text-transform:uppercase;color:var(--rs-ink3);margin-bottom:6px;font-weight:400;
+}
+#rs-sats .sd-f input,#rs-sats .sd-f select{
+	font-size:1rem;font-weight:500;background:var(--rs-bg);color:var(--rs-ink);
+	border:1px solid var(--rs-line);padding:10px 12px;min-width:190px;
+}
+#rs-sats .sd-f input:focus,#rs-sats .sd-f select:focus{outline:2px solid var(--rs-blue);outline-offset:-1px}
+#rs-sats .sd-quick{margin-bottom:22px}
+#rs-sats .sd-ql{font-family:var(--rs-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rs-ink3);margin-right:8px}
+#rs-sats .sd-chip{
+	background:var(--rs-bg);color:var(--rs-ink2);border:1px solid var(--rs-line);
+	padding:7px 13px;cursor:pointer;font-size:.9rem;font-weight:500;margin:0 6px 6px 0;
+}
+#rs-sats .sd-chip:hover{border-color:var(--rs-blue);color:var(--rs-blue)}
+#rs-sats .sd-chip:focus{outline:2px solid var(--rs-blue);outline-offset:1px}
+
+#rs-sats .sd-out{border:1px solid var(--rs-line);background:var(--rs-soft)}
+#rs-sats .sd-out-h{
+	padding:11px 16px;border-bottom:1px solid var(--rs-line);
+	font-family:var(--rs-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--rs-ink3);
+}
+#rs-sats .sd-row{padding:13px 16px;border-bottom:1px solid var(--rs-line2);overflow:hidden}
+#rs-sats .sd-row:last-child{border-bottom:0}
+#rs-sats .sd-row .sd-rl{float:left;max-width:70%;font-size:.98rem;color:var(--rs-ink2)}
+#rs-sats .sd-row .sd-rl b{display:block;color:var(--rs-ink);font-weight:600}
+#rs-sats .sd-row .sd-rl small{display:block;font-family:var(--rs-mono);font-size:9.5px;color:var(--rs-ink3);letter-spacing:.05em;margin-top:3px}
+#rs-sats .sd-row .sd-rv{
+	float:right;font-family:var(--rs-cond);font-weight:700;font-size:1.35rem;color:var(--rs-ink);
+	white-space:nowrap;
+}
+#rs-sats .sd-row .sd-rv.up{color:var(--rs-ok)}
+#rs-sats .sd-row .sd-rv.na{color:var(--rs-ink3);font-weight:500}
+
+#rs-sats .sd-note{margin-top:16px;padding:15px 17px;background:var(--rs-blue-soft);border-left:4px solid var(--rs-blue);font-size:.98rem;color:var(--rs-ink2)}
+#rs-sats .sd-note b{color:var(--rs-ink)}
+#rs-sats .sd-note.warn{background:var(--rs-warn-soft);border-left-color:var(--rs-warn)}
+
+#rs-sats .sd-tablewrap{overflow-x:auto;border:1px solid var(--rs-line);background:var(--rs-soft)}
+#rs-sats table.sd-t{font-size:.95rem}
+#rs-sats table.sd-t th{
+	text-align:left;font-family:var(--rs-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+	color:var(--rs-ink3);font-weight:400;padding:10px 13px;border-bottom:1px solid var(--rs-line);white-space:nowrap;
+}
+#rs-sats table.sd-t td{padding:12px 13px;border-bottom:1px solid var(--rs-line2);color:var(--rs-ink2);vertical-align:top}
+#rs-sats table.sd-t tr:last-child td{border-bottom:0}
+#rs-sats table.sd-t td.n{font-family:var(--rs-cond);font-weight:700;font-size:1.05rem;text-align:right;color:var(--rs-ink);white-space:nowrap}
+#rs-sats table.sd-t .r{font-weight:600;color:var(--rs-ink)}
+#rs-sats table.sd-t tr.flag td{background:var(--rs-chalk)}
+#rs-sats table.sd-t tr.flag td:first-child{box-shadow:inset 4px 0 0 var(--rs-warn)}
+#rs-sats table.sd-t .warn{display:block;font-size:.85rem;color:var(--rs-warn);font-style:italic;margin-top:3px}
+
+#rs-sats .sd-verdict{border:1px solid var(--rs-line);padding:22px;background:var(--rs-soft)}
+#rs-sats .sd-verdict.yes{border-left:5px solid var(--rs-ok);background:var(--rs-ok-soft)}
+#rs-sats .sd-verdict.no{border-left:5px solid var(--rs-warn);background:var(--rs-warn-soft)}
+#rs-sats .sd-verdict .vh{font-family:var(--rs-cond);font-weight:700;font-size:1.4rem;margin-bottom:8px}
+#rs-sats .sd-verdict.yes .vh{color:var(--rs-ok)}
+#rs-sats .sd-verdict.no .vh{color:var(--rs-warn)}
+#rs-sats .sd-verdict p{margin:0}
+#rs-sats .sd-verdict .vsub{margin-top:13px;padding-top:13px;border-top:1px solid var(--rs-line);font-size:.94rem;color:var(--rs-ink3)}
+
+#rs-sats .sd-honest{border:2px dashed var(--rs-warn);background:var(--rs-warn-soft);padding:22px;margin-top:26px}
+#rs-sats .sd-honest h3{color:var(--rs-warn);font-family:var(--rs-sans);font-weight:700;font-size:1.05rem;margin-bottom:10px}
+#rs-sats .sd-honest p{margin-bottom:11px;font-size:.99rem}
+#rs-sats .sd-honest p:last-child{margin-bottom:0}
+
+#rs-sats .sd-cols{border:1px solid var(--rs-line);background:var(--rs-bg);overflow:hidden}
+#rs-sats .sd-col{width:50%;float:left;padding:24px}
+#rs-sats .sd-col:first-child{border-right:1px solid var(--rs-line)}
+#rs-sats .sd-col li{font-size:.98rem;line-height:1.5;color:var(--rs-ink2);padding-left:22px;position:relative;margin-bottom:11px}
+#rs-sats .sd-col li:before{content:"";position:absolute;left:0;top:.62em;width:12px;height:2px;background:var(--rs-blue)}
+#rs-sats .sd-col h3{font-family:var(--rs-sans);font-weight:700;font-size:1.05rem;margin-bottom:14px}
+@media(max-width:767px){#rs-sats .sd-col{width:100%;float:none;border-right:0;border-bottom:1px solid var(--rs-line)}}
+
+#rs-sats .sd-cta{background:var(--rs-deep);color:#fff;padding:34px 30px;margin-top:8px}
+#rs-sats .sd-cta h2{color:#fff;font-size:1.9rem;margin-bottom:14px}
+#rs-sats .sd-cta p{color:rgba(255,255,255,.88);margin-bottom:14px;font-size:1.05rem}
+#rs-sats .sd-cta .sd-go{
+	display:inline-block;background:#fff;color:var(--rs-deep);font-weight:700;
+	padding:13px 26px;text-decoration:none;font-family:var(--rs-cond);font-size:1.15rem;letter-spacing:.02em;
+}
+#rs-sats .sd-cta .sd-go:hover{background:var(--rs-blue-soft);color:var(--rs-deep);text-decoration:none}
+#rs-sats .sd-cta .sd-fine{font-size:.93rem;color:rgba(255,255,255,.75);margin:14px 0 0}
+#rs-sats .sd-sign{padding-top:28px;font-size:.95rem;color:var(--rs-ink3)}
+#rs-sats .sd-sign b{color:var(--rs-ink);font-family:var(--rs-cond);font-size:1.1rem;font-weight:600;display:block}
+</style>
+</head>
+<body>
+<div class="em40_header_area_main">
+	<div class="solutech-header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-lg-9 col-xl-9 col-md-9 col-sm-12">
+					<div class="top-address text-left">
+						<p>
+							<span><i class="fas fa-home"></i>Skovvej 12, 4622 Havdrup</span>
+							<a href="tel:+4560727108"><i class="fas fa-phone-alt"></i>+45 60 72 71 08</a>
+							<a href="mailto:Emil@Rasmussen-Solutions.dk"><i class="fas fa-envelope"></i>Emil@Rasmussen-Solutions.dk</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tx_top2_relative">
+		<div class="">
+			<div class="tx_relative_m">
+				<div class="">
+					<div class="mainmenu_width_tx  ">
+						<div class="solutech-main-menu one_page hidden-xs hidden-sm witr_h_h4">
+							<div class="solutech_nav_area scroll_fixed postfix">
+								<div class="container">
+									<div class="row logo-left">
+										<div class="col-md-3 col-sm-3 col-xs-4">
+											<div class="logo">
+												<a class="main_sticky_main_l" href="index.html" title="Rasmussen Solutions">
+													<img src="assets/images/rs_logo_trans_1400_350_horizontal.png" alt="Rasmussen Solutions">
+												</a>
+												<a class="main_sticky_l" href="index.html" title="Rasmussen Solutions">
+													<img src="assets/images/rs_logo_trans_1400_350_horizontal_w.png" alt="Rasmussen Solutions">
+												</a>
+											</div>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-8">
+											<nav class="solutech_menu">
+												<ul class="sub-menu nav_scroll">
+													<li><a href="index.html#frontpage">Forside</a></li>
+													<li><a href="index.html#service">Service</a></li>
+													<li><a href="index.html#project">Projekter</a></li>
+													<li><a href="index.html#testimonial">Testimonial</a></li>
+													<li><a href="index.html#blog">Nyheder</a></li>
+												</ul>
+											</nav>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mobile_logo_area hidden-md hidden-lg">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="mobile_menu_logo text-center"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="home-2 mbm hidden-md hidden-lg  header_area main-menu-area">
+	<div class="menu_area mobile-menu">
+		<nav class="solutech_menu">
+			<ul class="sub-menu">
+				<li><a href="index.html#frontpage">Forside</a></li>
+				<li><a href="index.html#service">Service</a></li>
+				<li><a href="index.html#project">Projekter</a></li>
+				<li><a href="index.html#testimonial">Testimonial</a></li>
+				<li><a href="index.html#blog">Nyheder</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<div class="breadcumb-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 txtc  text-center ccase">
+				<div class="brpt">
+					<h2>SATSREGISTERET</h2>
+				</div>
+				<div class="breadcumb-inner">
+					<ul>
+						<li><a href="index.html">Forside</a></li>
+						<li><i class="fas fa-angle-right"></i></li>
+						<li>satsregisteret</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="rs-sats">
+
+	<div class="sd-wrap">
+		<div class="sd-sec" style="padding-top:46px">
+			<div class="sd-eyebrow">Et forslag til Danske Malermestre</div>
+			<h2 class="sd-h">Satser, der passer sig selv</h2>
+			<p class="sd-lede">
+				Når en overenskomst er forhandlet, sidder hver enkelt mester og taster satserne
+				ind i sit eget system. <strong>Forslaget er, at organisationen i stedet lægger dem
+				ét sted, og medlemmernes programmer henter dem selv.</strong>
+			</p>
+			<p class="sd-lede" style="font-size:1.06rem">
+				Så skal mesteren ingenting gøre. Lønnen er bare rigtig.
+			</p>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Hvor idéen kommer fra</div>
+			<h2 class="sd-h">Tiden går med overenskomsten, ikke med lønnen</h2>
+			<p>
+				En malermester satte ord på det: hans tidsrøver er ikke at køre løn. Det er at
+				finde ud af, hvad der egentlig blev aftalt.
+			</p>
+			<p>
+				Han skal læse forliget, finde de satser der rammer netop hans folk, regne dem om
+				og taste dem ind. Og fordi hans lærlinge rykker løntrin på deres egne datoer —
+				ikke på organisationens reguleringsdato — fører han kalender over, hvornår han
+				skal huske at regne baglæns.
+			</p>
+			<p class="sd-pull">
+				Det er ikke, fordi nogen gør det forkert. Det er, fordi den samme oversættelse
+				fra tekst til tal bliver lavet forfra af hvert eneste medlem, hver eneste gang.
+			</p>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Idéen</div>
+			<h2 class="sd-h">Organisationen bliver stedet, satserne kommer fra</h2>
+			<p>
+				Tænk på, hvordan en bank ikke selv sidder og taster dagens valutakurs ind. Den
+				bliver offentliggjort ét sted af dem, der har myndigheden, og alle andres systemer
+				henter den derfra. Det er samme princip.
+			</p>
+			<p>
+				Forskellen er, at denne her kun er for medlemmer. Er man ikke medlem, får man ikke
+				satserne. Det gør medlemskabet til noget, man mærker ved hver eneste lønkørsel.
+			</p>
+			<p>
+				Teknisk hedder sådan noget et API. Herfra kalder vi det bare
+				<strong>satsregisteret</strong>, for det er reelt, hvad det er: et register over
+				de forhandlede satser, som maskiner kan læse.
+			</p>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Sådan ville det virke</div>
+			<h2 class="sd-h">Tre skridt</h2>
+			<div class="sd-steps">
+				<div class="sd-step">
+					<div class="sd-step-n">1</div>
+					<div class="sd-step-b">
+						<div class="sd-step-who">Organisationen — som i dag</div>
+						<h3 class="sd-h3">I forhandler</h3>
+						<p>Præcis som nu. Der kommer et forlig med nye satser, nye lærlingetrin, ny pensionsprocent.</p>
+					</div>
+				</div>
+				<div class="sd-step">
+					<div class="sd-step-n">2</div>
+					<div class="sd-step-b">
+						<div class="sd-step-who">Organisationen — én gang, ikke hundrede</div>
+						<h3 class="sd-h3">Satserne skrives ind ét sted</h3>
+						<p>
+							En konsulent taster dem ind med de datoer, de gælder fra. En anden godkender.
+							Så er de låst og kan ikke laves om bagefter.
+						</p>
+					</div>
+				</div>
+				<div class="sd-step">
+					<div class="sd-step-n">3</div>
+					<div class="sd-step-b">
+						<div class="sd-step-who">Medlemmerne — helt af sig selv</div>
+						<h3 class="sd-h3">Deres systemer henter dem</h3>
+						<p>
+							Mesteren får ikke en besked, han skal reagere på. Satserne er der bare, og de
+							er rigtige — også for lærlingen, der rykkede trin midt i det hele.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sd-wide">
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Prøv det</div>
+			<h2 class="sd-h">Sådan ville det opføre sig</h2>
+			<p style="max-width:74ch">
+				Herunder kører en prøveudgave direkte i siden. Der er ingen maskine bag —
+				tallene er lagt ind i hånden, så du kan se, hvordan det ville føles at bruge.
+			</p>
+
+			<div class="sd-demo">
+				<div class="sd-demo-top">
+					<span class="sd-demo-title">Satsregisteret — prøveudgave</span>
+					<span class="sd-demo-flag">Opdigtede beløb</span>
+				</div>
+				<div class="sd-tabs" role="tablist">
+					<button class="sd-tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Hvad er satsen?</button>
+					<button class="sd-tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">En lærling gennem læretiden</button>
+					<button class="sd-tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Kun for medlemmer</button>
+				</div>
+
+				<div class="sd-panel" id="p1" role="tabpanel" aria-labelledby="t1">
+					<p class="sd-say">
+						Vælg en dato, og se hvad der var gældende netop den dag. Prøv at hoppe tilbage
+						i tiden — det er lige så vigtigt som at kende satsen i dag, når en gammel
+						lønseddel skal gås efter.
+					</p>
+					<div class="sd-ctrl">
+						<div class="sd-f">
+							<label for="d1">Hvilken dag?</label>
+							<input type="date" id="d1" min="2023-01-01" max="2029-12-31">
+						</div>
+						<div class="sd-f">
+							<label for="g1">Hvem gælder det?</label>
+							<select id="g1">
+								<option value="svend">Svende</option>
+								<option value="laerling">Lærlinge</option>
+								<option value="tillaeg">Tillæg og overarbejde</option>
+								<option value="pension">Pension og SH</option>
+							</select>
+						</div>
+					</div>
+					<div class="sd-quick">
+						<span class="sd-ql">Hop til</span>
+						<button class="sd-chip" data-date="2024-06-01">Sommeren 2024</button>
+						<button class="sd-chip" data-date="2025-05-01">1. maj 2025</button>
+						<button class="sd-chip" data-date="2026-03-01">1. marts 2026</button>
+						<button class="sd-chip" data-date="TODAY">I dag</button>
+					</div>
+					<div class="sd-out">
+						<div class="sd-out-h" id="h1">Gældende satser</div>
+						<div id="r1"></div>
+					</div>
+					<div class="sd-note" id="n1"></div>
+				</div>
+
+				<div class="sd-panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+					<p class="sd-say">
+						Det her er det konkrete problem. En lærling rykker løntrin på sin egen dato,
+						mens overenskomsten regulerer på sin. De to kalendere følges aldrig ad.
+					</p>
+					<div class="sd-ctrl">
+						<div class="sd-f">
+							<label for="d2">Startede i lære</label>
+							<input type="date" id="d2" value="2024-08-01" min="2020-01-01" max="2029-12-31">
+						</div>
+						<div class="sd-f">
+							<label for="l2">Læretidens længde</label>
+							<select id="l2"><option value="4">4 år</option><option value="3">3 år</option><option value="2">2 år</option></select>
+						</div>
+					</div>
+					<div class="sd-tablewrap">
+						<table class="sd-t">
+							<thead><tr><th>Fra – til</th><th>Han er</th><th>Timeløn</th><th>Hvorfor skiftede den?</th></tr></thead>
+							<tbody id="r2"></tbody>
+						</table>
+					</div>
+					<div class="sd-note" id="n2"></div>
+				</div>
+
+				<div class="sd-panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+					<p class="sd-say">
+						Satserne udleveres kun til medlemmer. Programmet skal oplyse, hvilken
+						virksomhed det spørger på vegne af — og er den ikke medlem, kommer der
+						ingen satser ud.
+					</p>
+					<div class="sd-ctrl">
+						<div class="sd-f">
+							<label for="d3">CVR-nummer</label>
+							<input type="text" id="d3" value="61834710" maxlength="8" inputmode="numeric">
+						</div>
+					</div>
+					<div class="sd-quick">
+						<span class="sd-ql">Prøv</span>
+						<button class="sd-chip" data-cvr="61834710">Et medlem</button>
+						<button class="sd-chip" data-cvr="42296244">Ikke medlem</button>
+						<button class="sd-chip" data-cvr="38112233">Meldt ud i 2025</button>
+					</div>
+					<div id="r3"></div>
+				</div>
+			</div>
+
+			<div style="max-width:820px;margin:0 auto">
+				<div class="sd-honest">
+					<h3>Det skal du vide om tallene</h3>
+					<p>
+						<strong>Kronebeløbene er fundet på.</strong> Vi har ikke Danske Malermestres
+						forhandlede timesatser, og det er bedre at vise en rigtig form med forkerte tal
+						end omvendt.
+					</p>
+					<p>
+						<strong>En del af det er derimod rigtigt</strong>, og det er tjekket efter:
+						reguleringsdatoerne 1. maj 2025, 1. marts 2026 og 1. marts 2027 er de rigtige.
+						Pensionen er 11 % fra arbejdsgiver og 2 % fra medarbejderen. Særlig lønopsparing
+						går fra 14,55 % til 15,55 % den 1. marts 2026 og videre til 16,55 % året efter.
+						Og sygeløn er 12 uger efter den nye overenskomst — det var 9 før.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sd-wrap">
+		<div class="sd-sec">
+			<div class="sd-cta">
+				<h2>Vil du prøve med jeres egne tal?</h2>
+				<p>
+					Det er den rigtige prøve. Skriv Danske Malermestres virkelige satser ind, og se
+					om maskinen regner det ud, som I selv ville. Rammer den rigtigt, passer idéen.
+					Rammer den forkert, har vi misforstået faget — og det er også værd at vide.
+				</p>
+				<a class="sd-go" href="satsvaerksted.html">Åbn Satsværkstedet →</a>
+				<p class="sd-fine">
+					Alt hvad du taster derinde bliver på din egen computer. Det sendes ingen steder hen.
+				</p>
+			</div>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Hvad det betyder</div>
+			<h2 class="sd-h">For organisationen, og for medlemmerne</h2>
+			<div class="sd-cols">
+				<div class="sd-col">
+					<h3>Hvad I får ud af det</h3>
+					<ul>
+						<li>Et medlemsgode, der virker ved hver eneste lønkørsel — ikke kun når nyhedsbrevet bliver læst.</li>
+						<li>Et medlemskab, der er svært at sige op, fordi det gør lønnen rigtig helt af sig selv.</li>
+						<li>Færre opkald til konsulenterne om, hvad satsen er nu.</li>
+						<li>Lønbureauerne vedligeholder allerede jeres satser hver for sig, inde i deres egne systemer. I kunne være kilden i stedet for en afskrift.</li>
+						<li>For første gang tal på, hvilke dele af overenskomsten medlemmerne faktisk bruger.</li>
+					</ul>
+				</div>
+				<div class="sd-col">
+					<h3>Hvad det kræver af jer</h3>
+					<ul>
+						<li>At en overenskomstkonsulent er med til at bestemme, hvordan satserne skal skrives op. Det er dér, fagkundskaben ligger.</li>
+						<li>At to personer står for det løbende: én taster ind, en anden godkender.</li>
+						<li>At I beslutter, hvem der må hente satserne.</li>
+						<li>At det bliver skrevet ned, hvem der hæfter for hvad, før nogen kører rigtig løn på det.</li>
+					</ul>
+				</div>
+			</div>
+			<p style="margin-top:24px">
+				Og for at være helt ærlig om det svære: det er ikke at bygge det. Det er at blive
+				enige om, hvordan en forhandlet overenskomst ser ud, når den skrives som tal — og
+				hvem der sætter sit navn på, at den er rigtig. Går den del galt, er satsregisteret
+				bare en hurtigere måde at sprede en fejl på.
+			</p>
+		</div>
+
+		<div class="sd-sec">
+			<div class="sd-eyebrow">Næste skridt</div>
+			<h2 class="sd-h">Tyve minutter</h2>
+			<p>
+				En snak med en, der kender overenskomsten. De kigger på demoen og siger, hvor vi har
+				misforstået faget — og det har vi sikkert flere steder. Bagefter ved vi, om der er
+				noget her. Siger de nej, er det også et fint svar.
+			</p>
+			<div class="sd-sign">
+				<b>Emil Rasmussen</b>
+				Rasmussen Solutions · +45 60 72 71 08 · Emil@Rasmussen-Solutions.dk
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="witrfm_area">
+	<div class="footer-middle">
+		<div class="container">
+			<div class="row">
+				<div class=" col-lg-3 col-md-6 col-sm-12">
+					<div class="widget widget_solutech_description_widget">
+						<div class="solutech-description-area">
+							<a href="index.html"><img src="assets/images/company-logo.png" alt="Rasmussen Solutions"></a>
+							<p>hjælper virksomheder med at udvikle skræddersyede apps og digitale platforme,
+								der effektiviserer processer og skaber værdi gennem innovative løsninger.</p>
+						</div>
+					</div>
+				</div>
+				<div class=" col-lg-3 col-md-6 col-sm-12">
+					<div class="widget widget_nav_menu">
+						<h2 class="widget-title">Jura</h2>
+						<ul class="menu">
+							<li><a href="privacy-policy.html">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="widget about_us">
+						<h2 class="widget-title">Kontakt</h2>
+						<div class="about-footer">
+							<div class="footer-widget address">
+								<div class="footer-logo"><p></p></div>
+								<div class="footer-address">
+									<div class="footer_s_inner">
+										<div class="footer-sociala-icon"><i class="fa fa-map-marker"></i></div>
+										<div class="footer-sociala-info"><p>Address : Skovvej 12, 4622 Havdrup</p></div>
+									</div>
+									<div class="footer_s_inner">
+										<div class="footer-sociala-icon"><i class="fa fa-phone"></i></div>
+										<div class="footer-sociala-info"><p>Telefon : +45 60 72 71 08</p></div>
+									</div>
+									<div class="footer_s_inner">
+										<div class="footer-sociala-icon"><i class="fa fa-envelope"></i></div>
+										<div class="footer-sociala-info"><p>E-mail : Emil@Rasmussen-Solutions.dk</p></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6  col-sm-12">
+					<div class="copy-right-text">
+						<p>Copyright &copy; all rights reserved.</p>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6  col-sm-12">
+					<div class="footer-menu">
+						<ul class="text-right">
+							<li><a href="index.html#frontpage">Forside</a></li>
+							<li><a href="index.html#service">Service</a></li>
+							<li><a href="index.html#project">Projekter</a></li>
+							<li><a href="index.html#testimonial">Testimonial</a></li>
+							<li><a href="index.html#blog">Nyheder</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/theme-pluginjs.js"></script>
+<script src="assets/js/jquery.meanmenu.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/satsregister.js"></script>
+<script>
+(function () {
+	"use strict";
+	var S = window.Satsregister;
+	if (!S) return;
+
+	var state = S.seed();
+	var TODAY = S.today();
+
+	/* medlemstjek — kun til illustration af, at adgangen følger medlemskabet */
+	var MEMBERS = {
+		"61834710": { name: "Danske Malermestre", status: "aktiv" },
+		"38112233": { name: "Nordvest Malerfirma ApS (fiktiv)", status: "udmeldt", until: "2025-06-30" }
+	};
+
+	/* faneblade */
+	var tabs = Array.prototype.slice.call(document.querySelectorAll("#rs-sats .sd-tab"));
+	tabs.forEach(function (tab) {
+		tab.addEventListener("click", function () {
+			tabs.forEach(function (t) {
+				var on = (t === tab);
+				t.setAttribute("aria-selected", on ? "true" : "false");
+				document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+			});
+		});
+	});
+
+	/* 1 — opslag */
+	var d1 = document.getElementById("d1"), g1 = document.getElementById("g1");
+	var h1 = document.getElementById("h1"), r1 = document.getElementById("r1"), n1 = document.getElementById("n1");
+
+	function render1() {
+		var date = d1.value || TODAY, group = g1.value;
+		var ver = S.versionAt(state, date), next = S.nextVersionAfter(state, date);
+		var items = S.ratesInGroup(state, group);
+		h1.textContent = S.GROUPS[group] + " — gældende " + S.dkLong(date);
+
+		if (!ver) {
+			var first = S.sortedVersions(state)[0];
+			r1.innerHTML = '<div class="sd-row"><div class="sd-rl"><b>Ingen satser så tidligt</b>' +
+				"Registeret starter " + S.dkLong(first.from) + '.</div><div class="sd-rv na">—</div></div>';
+			n1.className = "sd-note warn";
+			n1.innerHTML = "Vælg en dato efter " + S.dkLong(first.from) + ".";
+			return;
+		}
+
+		var prev = S.previousVersion(state, ver.id);
+		var html = "";
+		items.forEach(function (r) {
+			var val = S.valueAt(state, r, ver.id);
+			var old = prev ? S.valueAt(state, r, prev.id) : null;
+			var rose = (old !== null && val !== null && val > old);
+			html += '<div class="sd-row"><div class="sd-rl"><b>' + S.esc(r.label) + "</b>" +
+				(rose ? "Steg fra " + S.fmt(old, r.unit) + " ved sidste regulering"
+					  : "Uændret ved sidste regulering") +
+				'</div><div class="sd-rv' + (rose ? " up" : "") + '">' + S.fmt(val, r.unit) + "</div></div>";
+		});
+		r1.innerHTML = html;
+
+		var late = ver.published && ver.published > ver.from;
+		n1.className = "sd-note" + (late ? " warn" : "");
+		n1.innerHTML =
+			"Disse satser har været gældende siden <b>" + S.dkLong(ver.from) + "</b>." +
+			(late ? " Bemærk: forliget faldt først på plads " + S.dkLong(ver.published) +
+					" — altså efter satserne trådte i kraft. Det er præcis de perioder, en mester" +
+					" skal regne baglæns på i dag." : "") +
+			(next ? " Næste ændring er varslet til <b>" + S.dkLong(next.from) + "</b>." : "");
+	}
+	d1.addEventListener("input", render1);
+	g1.addEventListener("change", render1);
+	Array.prototype.forEach.call(document.querySelectorAll("#p1 .sd-chip"), function (c) {
+		c.addEventListener("click", function () {
+			var v = c.getAttribute("data-date");
+			d1.value = (v === "TODAY") ? TODAY : v;
+			render1();
+		});
+	});
+
+	/* 2 — lærlingeforløb */
+	var d2 = document.getElementById("d2"), l2 = document.getElementById("l2");
+	var r2 = document.getElementById("r2"), n2 = document.getElementById("n2");
+
+	function render2() {
+		var start = d2.value;
+		if (!start) { r2.innerHTML = ""; n2.className = "sd-note warn"; n2.textContent = "Vælg en startdato."; return; }
+		var segs = S.buildTimeline(state, start, parseInt(l2.value, 10));
+		if (!segs.length) {
+			r2.innerHTML = "";
+			n2.className = "sd-note warn";
+			n2.textContent = "Der er ingen reguleringer, der dækker den periode.";
+			return;
+		}
+		var html = "", retro = 0;
+		segs.forEach(function (s) {
+			if (s.retro) retro++;
+			html += "<tr" + (s.retro ? ' class="flag"' : "") + ">" +
+				"<td>" + S.dk(s.from) + " – " + (s.to ? S.dk(s.to) : "fortsat") + "</td>" +
+				'<td><span class="r">' + S.esc(s.role) + "</span></td>" +
+				'<td class="n">' + S.fmt(s.rate, "kr/time") + "</td>" +
+				"<td>" + S.esc(s.reason) +
+					(s.retro ? '<span class="warn">Aftalt efter den trådte i kraft — her skal der reguleres bagud</span>' : "") +
+				"</td></tr>";
+		});
+		r2.innerHTML = html;
+
+		n2.className = "sd-note" + (segs.uncovered ? " warn" : "");
+		n2.innerHTML =
+			(segs.uncovered ? "⚠ Prøvetabellen rækker kun tilbage til <b>" + S.dkLong(segs.uncovered) +
+				"</b>, så perioden før mangler.<br><br>" : "") +
+			"<b>" + (segs.length - 1) + " gange</b> skulle hans løn ændres i løbet af læretiden. " +
+			(retro ? "<b>" + retro + "</b> af gangene blev satsen aftalt, efter den var trådt i kraft — " +
+					 "så der skulle regnes baglæns og efterbetales. "
+				   : "") +
+			"Med et satsregister sker det hele af sig selv.";
+	}
+	d2.addEventListener("input", render2);
+	l2.addEventListener("change", render2);
+
+	/* 3 — medlemstjek */
+	var d3 = document.getElementById("d3"), r3 = document.getElementById("r3");
+
+	function render3() {
+		var cvr = (d3.value || "").replace(/\D/g, "");
+		var m = MEMBERS[cvr];
+		if (m && m.status === "aktiv") {
+			var ver = S.versionAt(state, TODAY);
+			var svend = S.rateByRole(state, "svend");
+			r3.innerHTML = '<div class="sd-verdict yes"><div class="vh">Satserne udleveres</div>' +
+				"<p>" + S.esc(m.name) + " er medlem. Virksomhedens system får de satser, der er" +
+				" gældende i dag" +
+				(ver && svend ? " — lige nu en mindstebetaling på " +
+					S.fmt(S.valueAt(state, svend, ver.id), "kr/time") + " i timen for en svend." : ".") +
+				'</p><div class="vsub">Mesteren mærker ingenting. Det sker i baggrunden, hver dag.</div></div>';
+			return;
+		}
+		if (m) {
+			r3.innerHTML = '<div class="sd-verdict no"><div class="vh">Ingen adgang</div>' +
+				"<p>" + S.esc(m.name) + " var medlem indtil " + S.dkLong(m.until) +
+				", og kan derfor ikke hente satser, der gælder efter den dato.</p>" +
+				'<div class="vsub">Virksomheden kan stadig slå op på det, der gjaldt, mens den var' +
+				" medlem — så gamle lønsedler kan stadig gås efter.</div></div>";
+			return;
+		}
+		r3.innerHTML = '<div class="sd-verdict no"><div class="vh">Ingen adgang</div>' +
+			"<p>CVR " + S.esc(cvr || "—") + " er ikke medlem, og får derfor ingen satser.</p>" +
+			'<div class="vsub">Det er her, medlemskabet bliver konkret: uden det skal man selv finde' +
+			" satserne og taste dem ind — præcis som alle gør i dag.</div></div>";
+	}
+	d3.addEventListener("input", render3);
+	Array.prototype.forEach.call(document.querySelectorAll("#p3 .sd-chip"), function (c) {
+		c.addEventListener("click", function () { d3.value = c.getAttribute("data-cvr"); render3(); });
+	});
+
+	d1.value = TODAY;
+	render1();
+	render2();
+	render3();
+})();
+</script>
+</body>
+</html>
