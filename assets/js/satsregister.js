@@ -6,8 +6,8 @@
  * to sider aldrig kan komme til at vise forskellige tal.
  *
  * OM TALLENE
- *   Kronebeløbene er OPDIGTEDE. Vi har ikke Danske Malermestres forhandlede
- *   satser.
+ *   Kronebeløbene er OPDIGTEDE. Vi har ikke en organisations faktiske
+ *   forhandlede satser.
  *   Efterprøvet mod offentlige kilder og derfor rigtigt:
  *     - reguleringsdatoerne 1/5-2025, 1/3-2026 og 1/3-2027 (OK25)
  *     - pension 11 % arbejdsgiver + 2 % egenbetaling fra 1/5-2025
