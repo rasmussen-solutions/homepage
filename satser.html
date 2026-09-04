@@ -225,6 +225,52 @@
 }
 #rs-sats .sd-found li:last-child{border-bottom:0}
 #rs-sats .sd-found b{display:block;color:var(--rs-ink);font-family:var(--rs-cond);font-size:1.15rem;font-weight:600;margin-bottom:4px}
+/* maskinrummet */
+#rs-sats .sd-figure{border:1px solid var(--rs-line);background:var(--rs-bg);padding:22px;overflow-x:auto}
+#rs-sats svg.sd-arch{display:block;min-width:780px;width:100%;height:auto}
+#rs-sats svg.sd-arch .band{fill:var(--rs-soft)}
+#rs-sats svg.sd-arch .box{fill:var(--rs-bg);stroke:var(--rs-line);stroke-width:1.25}
+#rs-sats svg.sd-arch .box-accent{fill:var(--rs-blue-soft);stroke:var(--rs-blue);stroke-width:1.5}
+#rs-sats svg.sd-arch .lbl{fill:var(--rs-ink);font-family:var(--rs-cond);font-size:13.5px;font-weight:600}
+#rs-sats svg.sd-arch .sub{fill:var(--rs-ink3);font-family:var(--rs-mono);font-size:9.5px;letter-spacing:.06em}
+#rs-sats svg.sd-arch .bandlbl{fill:var(--rs-ink3);font-family:var(--rs-mono);font-size:10px;letter-spacing:.14em}
+#rs-sats svg.sd-arch .flow{stroke:var(--rs-ink3);stroke-width:1.25;fill:none}
+#rs-sats svg.sd-arch .flow-accent{stroke:var(--rs-blue);stroke-width:1.75;fill:none}
+#rs-sats svg.sd-arch .head{fill:var(--rs-ink3)}
+#rs-sats svg.sd-arch .head-accent{fill:var(--rs-blue)}
+#rs-sats svg.sd-arch .edgelbl{fill:var(--rs-ink3);font-family:var(--rs-mono);font-size:9px;letter-spacing:.04em}
+#rs-sats .sd-caption{font-size:.92rem;color:var(--rs-ink3);margin-top:16px;padding-left:16px;border-left:3px solid var(--rs-line);max-width:72ch}
+
+#rs-sats .sd-eps{border:1px solid var(--rs-line);background:var(--rs-bg)}
+#rs-sats .sd-ep{padding:14px 18px;border-bottom:1px solid var(--rs-line2);overflow:hidden}
+#rs-sats .sd-ep:last-child{border-bottom:0}
+#rs-sats .sd-verb{
+	float:left;width:52px;font-family:var(--rs-mono);font-size:10px;letter-spacing:.08em;
+	font-weight:700;color:var(--rs-ok);padding-top:3px;
+}
+#rs-sats .sd-ep-b{margin-left:60px}
+#rs-sats .sd-ep-b code{
+	display:block;font-family:var(--rs-mono);font-size:.86rem;color:var(--rs-ink);
+	word-break:break-all;background:none;padding:0;border:0;
+}
+#rs-sats .sd-ep-b p{margin:5px 0 0;font-size:.9rem;color:var(--rs-ink3)}
+
+#rs-sats .sd-io{margin-top:16px;border:1px solid var(--rs-line);overflow:hidden;background:var(--rs-line)}
+#rs-sats .sd-io-pane{width:50%;float:left;background:var(--rs-bg);min-width:0}
+#rs-sats .sd-io-pane + .sd-io-pane{box-shadow:inset 1px 0 0 var(--rs-line)}
+@media(max-width:767px){#rs-sats .sd-io-pane{width:100%;float:none}}
+#rs-sats .sd-io-pane h4{
+	margin:0;padding:10px 14px;border-bottom:1px solid var(--rs-line);background:var(--rs-soft);
+	font-family:var(--rs-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+	color:var(--rs-ink3);font-weight:400;
+}
+#rs-sats .sd-io-pane pre{
+	margin:0;padding:14px;font-family:var(--rs-mono);font-size:11.5px;line-height:1.6;
+	overflow-x:auto;color:var(--rs-ink2);background:none;border:0;border-radius:0;
+}
+#rs-sats .sd-io-pane pre .k{color:var(--rs-blue)}
+#rs-sats .sd-io-pane pre .s{color:var(--rs-ok)}
+#rs-sats .sd-io-pane pre .n{color:var(--rs-warn)}
 #rs-sats .sd-sign{padding-top:28px;font-size:.95rem;color:var(--rs-ink3)}
 #rs-sats .sd-sign b{color:var(--rs-ink);font-family:var(--rs-cond);font-size:1.1rem;font-weight:600;display:block}
 </style>
@@ -480,6 +526,160 @@
 
 	<div class="sd-wide">
 		<div class="sd-sec">
+			<div class="sd-eyebrow">Maskinrummet</div>
+			<h2 class="sd-h">Sådan ville det hænge sammen</h2>
+			<p style="max-width:74ch">
+				Kernen ville være lille med vilje. Det er ikke et nyt system, organisationen
+				skulle drive — det er et register med en redaktionel arbejdsgang foran og et
+				læse-API bagved. Den eneste vej ind i registeret går gennem <em>Publicér</em>.
+				Alt til højre for den pil læser; intet skriver.
+			</p>
+
+			<div class="sd-figure">
+				<svg class="sd-arch" viewBox="0 0 900 400" role="img" aria-label="Arkitekturdiagram: organisationens redaktion publicerer til satsregisteret, som medlemssystemer læser fra">
+				<!-- bands -->
+				<rect class="band" x="0" y="34" width="268" height="330"></rect>
+				<rect class="band" x="316" y="34" width="252" height="330"></rect>
+				<rect class="band" x="616" y="34" width="284" height="330"></rect>
+				<text class="bandlbl" x="0" y="22">1 · REDAKTION HOS ORGANISATIONEN</text>
+				<text class="bandlbl" x="316" y="22">2 · SATSREGISTERET</text>
+				<text class="bandlbl" x="616" y="22">3 · FORBRUGERE</text>
+				<!-- band 1 -->
+				<rect class="box" x="20" y="60" width="228" height="52"></rect>
+				<text class="lbl" x="34" y="82">Forligstekst</text>
+				<text class="sub" x="34" y="98">PDF · PROTOKOLLAT</text>
+				<rect class="box" x="20" y="140" width="228" height="60"></rect>
+				<text class="lbl" x="34" y="162">Indtastning</text>
+				<text class="sub" x="34" y="178">KONSULENT OPRETTER UDKAST</text>
+				<text class="sub" x="34" y="192">MED GYLDIGHEDSDATOER</text>
+				<rect class="box" x="20" y="228" width="228" height="60"></rect>
+				<text class="lbl" x="34" y="250">Fire øjne</text>
+				<text class="sub" x="34" y="266">ANDEN KONSULENT GODKENDER</text>
+				<text class="sub" x="34" y="280">DIFF MOD FORRIGE VERSION</text>
+				<rect class="box-accent" x="20" y="316" width="228" height="48"></rect>
+				<text class="lbl" x="34" y="338">Publicér</text>
+				<text class="sub" x="34" y="354">VERSIONEN LÅSES — UÆNDERLIG</text>
+				<!-- vertical flow band 1 -->
+				<path class="flow" d="M134 112 L134 134"></path>
+				<path class="head" d="M134 140 l-4 -7 h8 z"></path>
+				<path class="flow" d="M134 200 L134 222"></path>
+				<path class="head" d="M134 228 l-4 -7 h8 z"></path>
+				<path class="flow" d="M134 288 L134 310"></path>
+				<path class="head" d="M134 316 l-4 -7 h8 z"></path>
+				<!-- band 2 -->
+				<rect class="box-accent" x="336" y="60" width="212" height="122"></rect>
+				<text class="lbl" x="350" y="84">Versioneret satsregister</text>
+				<text class="sub" x="350" y="104">AGREEMENT → VERSION → RATE</text>
+				<text class="sub" x="350" y="120">GYLDIG FRA / GYLDIG TIL</text>
+				<text class="sub" x="350" y="136">KILDEHENVISNING PR. SATS</text>
+				<text class="sub" x="350" y="160">PUBLICEREDE VERSIONER</text>
+				<text class="sub" x="350" y="174">ÆNDRES ALDRIG</text>
+				<rect class="box" x="336" y="204" width="212" height="76"></rect>
+				<text class="lbl" x="350" y="228">Læse-API</text>
+				<text class="sub" x="350" y="246">GET /rates?date=…</text>
+				<text class="sub" x="350" y="260">GET /versions</text>
+				<text class="sub" x="350" y="274">GET /changes?since=…</text>
+				<rect class="box" x="336" y="302" width="212" height="62"></rect>
+				<text class="lbl" x="350" y="324">Adgang</text>
+				<text class="sub" x="350" y="342">API-NØGLE PR. SYSTEM</text>
+				<text class="sub" x="350" y="356">+ MEDLEMSTJEK PR. OPSLAG</text>
+				<path class="flow-accent" d="M248 340 L292 340 L292 121 L330 121"></path>
+				<path class="head-accent" d="M336 121 l-7 -4 v8 z"></path>
+				<text class="edgelbl" x="256" y="332">PUBLICÉR</text>
+				<path class="flow" d="M442 182 L442 198"></path>
+				<path class="head" d="M442 204 l-4 -7 h8 z"></path>
+				<path class="flow" d="M442 280 L442 296"></path>
+				<path class="head" d="M442 302 l-4 -7 h8 z"></path>
+				<!-- band 3 -->
+				<rect class="box-accent" x="636" y="60" width="244" height="66"></rect>
+				<text class="lbl" x="650" y="83">Mesterplan</text>
+				<text class="sub" x="650" y="100">SATSER PÅ MEDARBEJDERKORT</text>
+				<text class="sub" x="650" y="114">→ VIDERE TIL DANLØN</text>
+				<rect class="box" x="636" y="146" width="244" height="60"></rect>
+				<text class="lbl" x="650" y="169">Andre fagsystemer</text>
+				<text class="sub" x="650" y="186">LØN · ERP · TIMEREGISTRERING</text>
+				<text class="sub" x="650" y="200">SAMME NØGLE, SAMME SVAR</text>
+				<rect class="box" x="636" y="226" width="244" height="60"></rect>
+				<text class="lbl" x="650" y="249">Egen medlemsportal</text>
+				<text class="sub" x="650" y="266">SATSTABEL GENERERET</text>
+				<text class="sub" x="650" y="280">FRA SAMME KILDE</text>
+				<rect class="box" x="636" y="306" width="244" height="58"></rect>
+				<text class="lbl" x="650" y="329">Beregningsmotor (Python)</text>
+				<text class="sub" x="650" y="346">ORGANISATIONENS EGEN IT</text>
+				<path class="flow-accent" d="M548 93 L636 93"></path>
+				<path class="head-accent" d="M636 93 l-7 -4 v8 z"></path>
+				<path class="flow" d="M548 176 L592 176 L592 176 L636 176"></path>
+				<path class="head" d="M636 176 l-7 -4 v8 z"></path>
+				<path class="flow" d="M548 242 L592 242 L592 256 L636 256"></path>
+				<path class="head" d="M636 256 l-7 -4 v8 z"></path>
+				<path class="flow" d="M548 333 L636 333"></path>
+				<path class="head" d="M636 333 l-7 -4 v8 z"></path>
+				<text class="edgelbl" x="556" y="86">HENT SATSER</text>
+				</svg>
+			</div>
+			<p class="sd-caption">
+				Alt til venstre for <em>Publicér</em> er redaktionelt arbejde, organisationen
+				allerede laver i dag — bare med et sted at lægge resultatet. Alt til højre er
+				systemer, der læser.
+			</p>
+
+			<h3 class="sd-h3" style="margin-top:34px">Fire designvalg, der ville bære det</h3>
+			<ul class="sd-found" style="margin-top:14px">
+				<li>
+					<b>Publicerede versioner ville være uforanderlige</b>
+					Rettes en fejl, sker det som en ny version med en note — aldrig ved at
+					overskrive. Ellers kan man ikke genskabe en lønseddel fra i fjor.
+				</li>
+				<li>
+					<b>Alt er dateret, intet er “nu”</b>
+					Hvert opslag tager en dato. Det er hele grunden til, at bagudrettede
+					lærlingeberegninger holder op med at være håndarbejde.
+				</li>
+				<li>
+					<b>Hver sats peger på sin kilde</b>
+					Paragraf og bilag i overenskomsten. Så kan en mester — eller en konsulent —
+					altid se, hvor tallet kommer fra.
+				</li>
+				<li>
+					<b>Registeret ville ikke beregne løn</b>
+					Det leverer satser. Lønberegningen bliver i de systemer, der allerede har
+					ansvaret for den. Det holder organisationens risiko lille.
+				</li>
+			</ul>
+
+			<h3 class="sd-h3" style="margin-top:34px">Endepunkterne, et system ville bruge</h3>
+			<div class="sd-eps" style="margin-top:14px">
+				<div class="sd-ep">
+					<span class="sd-verb">GET</span>
+					<div class="sd-ep-b"><code>/v1/rates?date=2026-09-02&amp;group=laerling</code>
+					<p>Alle gældende satser på en given dato. Det opslag, langt de fleste systemer ville lave.</p></div>
+				</div>
+				<div class="sd-ep">
+					<span class="sd-verb">GET</span>
+					<div class="sd-ep-b"><code>/v1/rates/{kode}/history</code>
+					<p>Hele forløbet for én sats. Bruges når en lønseddel skal genskabes eller efterreguleres.</p></div>
+				</div>
+				<div class="sd-ep">
+					<span class="sd-verb">GET</span>
+					<div class="sd-ep-b"><code>/v1/versions</code>
+					<p>Alle publicerede versioner med ikrafttrædelse og kildedokument.</p></div>
+				</div>
+				<div class="sd-ep">
+					<span class="sd-verb">GET</span>
+					<div class="sd-ep-b"><code>/v1/changes?since=2026-03-01</code>
+					<p>Hvad har ændret sig siden sidst, så et system kan spørge én gang i døgnet i stedet for at hente alt.</p></div>
+				</div>
+				<div class="sd-ep">
+					<span class="sd-verb">POST</span>
+					<div class="sd-ep-b"><code>/v1/webhooks</code>
+					<p>Bliv kaldt op, når en ny version publiceres. Så er satserne opdateret samme dag, forliget falder på plads.</p></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sd-wide">
+		<div class="sd-sec">
 			<div class="sd-eyebrow">Hvad der findes i dag</div>
 			<h2 class="sd-h">En prototype, man kan klikke på</h2>
 			<p style="max-width:74ch">
@@ -531,6 +731,10 @@
 						<div id="r1"></div>
 					</div>
 					<div class="sd-note" id="n1"></div>
+					<div class="sd-io">
+						<div class="sd-io-pane"><h4>Det programmet spørger om</h4><pre id="q1"></pre></div>
+						<div class="sd-io-pane"><h4>Det registeret svarer</h4><pre id="a1"></pre></div>
+					</div>
 				</div>
 
 				<div class="sd-panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
@@ -756,6 +960,30 @@
 	var state = S.seed();
 	var TODAY = S.today();
 
+	/* minimal JSON-farvelægning, så maskinrummet er til at læse */
+	function paintJson(obj) {
+		var raw = JSON.stringify(obj, null, 2), out = "", i = 0;
+		while (i < raw.length) {
+			var ch = raw[i];
+			if (ch === '"') {
+				var j = i + 1;
+				while (j < raw.length && !(raw[j] === '"' && raw[j - 1] !== "\\")) j++;
+				var str = raw.slice(i, j + 1);
+				out += '<span class="' + (raw[j + 1] === ":" ? "k" : "s") + '">' + S.esc(str) + "</span>";
+				i = j + 1;
+			} else if (/[-0-9]/.test(ch) && /[\s:\[,]/.test(raw[i - 1] || " ")) {
+				var m = raw.slice(i).match(/^-?\d+(\.\d+)?/);
+				out += '<span class="n">' + m[0] + "</span>";
+				i += m[0].length;
+			} else if (raw.startsWith("true", i) || raw.startsWith("false", i) || raw.startsWith("null", i)) {
+				var w = raw.startsWith("true", i) ? "true" : raw.startsWith("false", i) ? "false" : "null";
+				out += '<span class="n">' + w + "</span>";
+				i += w.length;
+			} else { out += S.esc(ch); i++; }
+		}
+		return out;
+	}
+
 	/* medlemstjek — kun til illustration af, at adgangen følger medlemskabet */
 	var MEMBERS = {
 		"10000001": { name: "Malerfirmaet Eksempel A/S", status: "aktiv" },
@@ -777,6 +1005,7 @@
 	/* 1 — opslag */
 	var d1 = document.getElementById("d1"), g1 = document.getElementById("g1");
 	var h1 = document.getElementById("h1"), r1 = document.getElementById("r1"), n1 = document.getElementById("n1");
+	var q1 = document.getElementById("q1"), a1 = document.getElementById("a1");
 
 	function render1() {
 		var date = d1.value || TODAY, group = g1.value;
@@ -784,12 +1013,23 @@
 		var items = S.ratesInGroup(state, group);
 		h1.textContent = S.GROUPS[group] + " — gældende " + S.dkLong(date);
 
+		q1.textContent =
+			"GET /v1/rates?date=" + date + "&group=" + group + "\n" +
+			"Host: api.eksempel-organisation.dk\n" +
+			"Authorization: Bearer sk_live_••••••••\n" +
+			"X-Member-CVR: 10000001";
+
 		if (!ver) {
 			var first = S.sortedVersions(state)[0];
 			r1.innerHTML = '<div class="sd-row"><div class="sd-rl"><b>Ingen satser så tidligt</b>' +
 				"Registeret starter " + S.dkLong(first.from) + '.</div><div class="sd-rv na">—</div></div>';
 			n1.className = "sd-note warn";
 			n1.innerHTML = "Vælg en dato efter " + S.dkLong(first.from) + ".";
+			a1.innerHTML = paintJson({
+				error: "no_version_in_effect",
+				message: "Der findes ingen publiceret version gældende pr. " + date + ".",
+				earliest_available: first.from
+			});
 			return;
 		}
 
@@ -814,6 +1054,26 @@
 					" — altså efter satserne trådte i kraft. Det er præcis de perioder, en mester" +
 					" skal regne baglæns på i dag." : "") +
 			(next ? " Næste ændring er varslet til <b>" + S.dkLong(next.from) + "</b>." : "");
+
+		a1.innerHTML = paintJson({
+			agreement: "malerfaget",
+			query_date: date,
+			version: {
+				id: ver.id,
+				effective_from: ver.from,
+				published_at: ver.published
+			},
+			wage_system: "minimalloen",
+			next_known_change: next ? next.from : null,
+			rates: items.map(function (r) {
+				return {
+					code: r.label.toUpperCase().replace(/[^A-ZÆØÅ0-9]+/g, "_").replace(/^_|_$/g, ""),
+					label: r.label,
+					unit: r.unit,
+					value: S.valueAt(state, r, ver.id)
+				};
+			})
+		});
 	}
 	d1.addEventListener("input", render1);
 	g1.addEventListener("change", render1);
