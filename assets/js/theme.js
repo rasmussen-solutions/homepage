@@ -240,7 +240,10 @@
 	/* counter */
 	$('.counter').counterUp({
 		delay: 10,
-		time: 1000
+		time: 1000,
+		formatter: function (num) {
+			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+		}
 	});	
 	/* classic Button */
 	$(".btn_w").addClass('a_active');
