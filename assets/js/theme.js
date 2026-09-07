@@ -238,6 +238,9 @@
         infinigall: true
     });
 	/* counter */
+	$('.counter[data-num]').each(function () {
+		$(this).text($(this).attr('data-num'));
+	});
 	$('.counter').counterUp({
 		delay: 10,
 		time: 1000,
