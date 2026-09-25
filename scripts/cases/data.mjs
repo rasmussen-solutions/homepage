@@ -370,6 +370,9 @@ export const cases = [
 					'<b>Dokumenter</b>, der kan sendes til medarbejderne med kvittering eller underskrift.',
 					'<b>Medarbejdere</b> med invitationer, ledere og profilbilleder.',
 				],
+				shots: [
+					{ src: 'intrahub-web-dashboard.jpg', kind: 'wide', title: 'Administration på web', caption: 'Overblik over projekter, APV\'er, opslag og aktiviteter. Demo-virksomhed.', alt: 'IntraHubs web-dashboard for administratorer' },
+				],
 			},
 			{
 				eyebrow: 'Forløb',
@@ -377,7 +380,11 @@ export const cases = [
 				title: 'Faste opgaver, der kører af sig selv',
 				body: [
 					'Nogle ting skal gøres på samme måde hver gang, fx når en medarbejder siger op. Et forløb i IntraHub starter, når noget bliver oprettet, skifter status, på et fast tidspunkt eller med et klik, og fordeler opgaverne til en rolle, til medarbejderens leder eller til den, der startede det.',
-					'Der følger færdige danske skabeloner med til fratrædelse og opsigelse.',
+					'Der følger færdige danske skabeloner med til opsigelse, afskedigelse og nye medarbejdere.',
+				],
+				shots: [
+					{ src: 'intrahub-web-skabeloner.jpg', kind: 'wide', title: 'Skabeloner', caption: 'Opsigelse, afskedigelse og onboarding, klar til at installere.', alt: 'Skabeloner til forløb i IntraHub' },
+					{ src: 'intrahub-web-flow.jpg', kind: 'panel', title: 'Et forløb', caption: 'Ny medarbejder: opgaver, godkendelse og notifikation i fire trin. Demo-virksomhed.', alt: 'Forløbet Ny medarbejder med fire trin' },
 				],
 			},
 			{
