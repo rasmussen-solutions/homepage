@@ -159,6 +159,7 @@ export const cases = [
 					'Man kan også stille spørgsmål til tegningen. Svarene holder sig til det, der står på tegningen, og siger til, når de ikke kan vide det.',
 				],
 				shots: [
+					{ src: 'mesterplan-tegningsanalyse.jpg', kind: 'wide', title: 'Tegningsanalyse', caption: 'Upload en tegning og få mængderne, før I byder. Eksemplet er anonymiseret.', alt: 'Mesterplan tegningsanalyse med facadetegning og AI-svar' },
 					{ src: 'mesterplan-maengdeudtag.jpg', kind: 'wide', title: 'Mængdeudtag', caption: 'Hver post med antal, enhed og sikkerhed. Eksemplet er anonymiseret.', alt: 'Mængdeudtag fra en facadetegning med usikkerhed pr. post' },
 					{ src: 'mesterplan-chat.jpg', kind: 'phone', title: 'Spørg om tegningen', caption: 'Svar, der holder sig til tegningen.', alt: 'Chat om en tegning i Mesterplan' },
 				],
