@@ -5,12 +5,12 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<!-- Genereret af scripts/cases/build.mjs ud fra scripts/cases/data.mjs. Ret dér, ikke her. -->
 	<title>Mesterplan | Rasmussen Solutions</title>
-	<meta name="description" content="Mesterplan er vores eget sagsstyringssystem til håndværkere: tilbud, planlægning, timer, e-faktura og AI-tegningsanalyse ét sted.">
+	<meta name="description" content="Mesterplan er vores eget sagsstyringssystem til håndværkere: tilbud, sager og delprojekter, planlægning, fakturering efter stade, e-faktura via NemHandel, prisfiler fra grossisten, e-conomic og Danløn.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="canonical" href="https://rasmussen-solutions.dk/mesterplan.html">
 	<meta property="og:type" content="article">
 	<meta property="og:title" content="Mesterplan | Rasmussen Solutions">
-	<meta property="og:description" content="Mesterplan er vores eget sagsstyringssystem til håndværkere: tilbud, planlægning, timer, e-faktura og AI-tegningsanalyse ét sted.">
+	<meta property="og:description" content="Mesterplan er vores eget sagsstyringssystem til håndværkere: tilbud, sager og delprojekter, planlægning, fakturering efter stade, e-faktura via NemHandel, prisfiler fra grossisten, e-conomic og Danløn.">
 	<meta property="og:url" content="https://rasmussen-solutions.dk/mesterplan.html">
 	<meta property="og:image" content="https://rasmussen-solutions.dk/assets/images/project-thumb-mesterplan.png">
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -122,7 +122,7 @@
 		<section class="cs-sec">
 			<div class="cs-eyebrow">Kort fortalt</div>
 			<h2 class="cs-h">Hele sagen ét sted</h2>
-			<p class="cs-lede">En håndværksmester har ofte tilbud i ét program, timer i et andet og fakturaer i et tredje. <strong>Mesterplan samler sagen</strong>: tilbud, planlægning, timer, materialer og faktura, koblet direkte til regnskabet.</p>
+			<p class="cs-lede">En håndværksmester har ofte tilbud i ét program, timer i et andet, fakturaer fra grossisten i en mailboks og regnskabet hos bogholderen. <strong>Mesterplan samler sagen</strong>: tilbud, planlægning, timer, materialer og faktura, koblet direkte til grossisten, regnskabet og lønnen.</p>
 
 			<dl class="cs-facts">
 				<div class="cs-fact"><dt>Type</dt><dd>Eget SaaS-produkt</dd></div>
@@ -139,31 +139,113 @@
 			<h2 class="cs-h">Sådan ser det ud</h2>
 			<div class="cs-shots">
 				<figure class="cs-shot wide">
-					<button type="button" aria-label="Forstør: Tegningsanalyse"><img src="assets/images/cases/mesterplan-tegningsanalyse.jpg" alt="Mesterplan tegningsanalyse med facadetegning og AI-svar" loading="lazy"></button>
-					<figcaption><b>Tegningsanalyse</b>Upload en tegning og få mængderne, før I byder. Eksemplet er anonymiseret.</figcaption>
-				</figure>
-				<figure class="cs-shot phone">
-					<button type="button" aria-label="Forstør: Spørg om tegningen"><img src="assets/images/cases/mesterplan-chat.jpg" alt="Chat om en tegning i Mesterplan" loading="lazy"></button>
-					<figcaption><b>Spørg om tegningen</b>Svarene holder sig til tegningen og siger til, når de ikke kan vide det.</figcaption>
+					<button type="button" aria-label="Forstør: Planlægning"><img src="assets/images/cases/mesterplan-planlaegning.jpg" alt="Mesterplan planlægning med medarbejdere fordelt på teams" loading="lazy"></button>
+					<figcaption><b>Planlægning</b>Hvem er hvor, hvornår. Gantt, dag, uge og måned, med teams og fravær. Demo-data.</figcaption>
 				</figure>
 			</div>
 		</div>
 	</section>
 
 	<div class="cs-wrap">
-		<section class="cs-sec">
-			<div class="cs-eyebrow">Hvad vi byggede</div>
-			<h2 class="cs-h">Fra første tegning til betalt faktura</h2>
-			<div class="cs-feat">
-				<div><h3>Tilbud fra prisbibliotek</h3><p>Tilbud bygges af firmaets egne priser og varer.</p></div>
-				<div><h3>Tegningsanalyse med AI</h3><p>Tæller vinduer og døre på PDF-tegninger og viser, hvor sikkert tallet er.</p></div>
-				<div><h3>E-faktura fra grossister</h3><p>Fakturaer kommer ind via NemHandel og matches automatisk til sagen.</p></div>
-				<div><h3>Timer, materialer og kalender</h3><p>Planlægning og registrering fra telefonen, også offline.</p></div>
-				<div><h3>Underentreprenører</h3><p>Inviteres ind på én sag uden at se resten af firmaet.</p></div>
-				<div><h3>Kvalitetssikring</h3><p>Tjeklister og dokumentation på sagen.</p></div>
-				<div><h3>Rapporter</h3><p>En rapportbygger, hvor firmaet selv sætter sine rapporter sammen.</p></div>
-				<div><h3>Regnskab</h3><p>Forbundet med e-conomic og Dinero.</p></div>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Sagsstyring <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">Fra tilbud til sag til faktura</h2>
+			<p>Alt i Mesterplan hænger på sagen. Et tilbud får sit eget fortløbende nummer, og når kunden siger ja, bliver det til en sag med ét klik. Kalkulationen følger med, så budgettet på sagen er det, der blev lovet i tilbuddet.</p>
+			<p>Store opgaver kan deles op i delprojekter. Hvert delprojekt får sit eget nummer under hovedsagen, fx 1001-1 og 1001-2, med eget budget, egne timer og egne materialer.</p>
+			<ul class="cs-points">
+				<li><b>Tilbud</b> fra firmaets eget prisbibliotek, sendt som PDF, hvor firmaet selv vælger, hvilke afsnit kunden ser.</li>
+				<li><b>Timer og materialer</b> registreres på sagen fra telefonen, også uden dækning. Appen gemmer og sender, når forbindelsen er tilbage.</li>
+				<li><b>Planlægning</b> af folk og opgaver i Gantt, dag, uge og måned, med teams, fravær og ferie.</li>
+				<li><b>Aftalesedler, budget og rapporter</b>, så mesteren kan se, om sagen tjener penge, mens den kører.</li>
+			</ul>
+
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Fakturering <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">Faktura efter stade</h2>
+			<p>De fleste håndværkssager faktureres i rater. Mesterplan lader mesteren fakturere efter stade på hver linje i tilbudslisten, i kroner eller procent, både på hovedsagen og på delprojekterne.</p>
+			<p>Bagefter viser sagen, hvor meget der er faktureret, og hvad der mangler, fordelt på hovedsag og delprojekter.</p>
+
+			<div class="cs-shots">
+				<figure class="cs-shot panel">
+					<button type="button" aria-label="Forstør: Opret faktura"><img src="assets/images/cases/mesterplan-stade.jpg" alt="Fakturering efter stade med hovedsag og delprojekter" loading="lazy"></button>
+					<figcaption><b>Opret faktura</b>Stade pr. position, i kr. eller %. Demo-data.</figcaption>
+				</figure>
+				<figure class="cs-shot wide">
+					<button type="button" aria-label="Forstør: Fordeling pr. sag"><img src="assets/images/cases/mesterplan-fordeling.jpg" alt="Tabel over fakturering fordelt på delprojekter" loading="lazy"></button>
+					<figcaption><b>Fordeling pr. sag</b>Kontraktsum, faktureret og rest for hovedsag og delprojekter. Demo-data.</figcaption>
+				</figure>
 			</div>
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">AI-tegningsanalyse <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">Mængderne ud af tegningen, før I byder</h2>
+			<p>Mesteren uploader en PDF-tegning og får et mængdeudtag: vinduer, døre, formsten, fuger og arealer. Hvert tal har en sikkerhed, og usikre tal er markeret, så man ved, hvad der skal tjekkes, før det går i et tilbud.</p>
+			<p>Man kan også stille spørgsmål til tegningen. Svarene holder sig til det, der står på tegningen, og siger til, når de ikke kan vide det.</p>
+
+			<div class="cs-shots">
+				<figure class="cs-shot wide">
+					<button type="button" aria-label="Forstør: Mængdeudtag"><img src="assets/images/cases/mesterplan-maengdeudtag.jpg" alt="Mængdeudtag fra en facadetegning med usikkerhed pr. post" loading="lazy"></button>
+					<figcaption><b>Mængdeudtag</b>Hver post med antal, enhed og sikkerhed. Eksemplet er anonymiseret.</figcaption>
+				</figure>
+				<figure class="cs-shot phone">
+					<button type="button" aria-label="Forstør: Spørg om tegningen"><img src="assets/images/cases/mesterplan-chat.jpg" alt="Chat om en tegning i Mesterplan" loading="lazy"></button>
+					<figcaption><b>Spørg om tegningen</b>Svar, der holder sig til tegningen.</figcaption>
+				</figure>
+			</div>
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">E-faktura via NemHandel <span class="cs-status rollout">Rulles ud</span></div>
+			<h2 class="cs-h">Grossistens faktura finder selv sagen</h2>
+			<p>Grossisterne sender deres fakturaer som e-faktura over NemHandel. Mesterplan tager imod dem og læser sagsnummeret i fakturaens reference. Passer det til en sag, bliver fakturalinjerne automatisk til materialer på sagen. Passer det ikke, lander fakturaen i en indbakke, hvor den kan lægges på den rigtige sag med et par klik.</p>
+			<p>Modtagelsen kører i dag på vores egen virksomhed og rulles nu ud til kunderne.</p>
+
+
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Prisfiler fra grossisten <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">Bygmas prisbog direkte ind i prisbiblioteket</h2>
+			<p>Et tilbud er kun så godt som priserne bag det. Mesterplan kan indlæse Bygmas prisbog, hele kataloget med brutto- og nettopriser og EAN-numre. Vi har testet det på en rigtig prisfil med over 13.000 varer.</p>
+			<p>En ny prisfil erstatter den gamle i én omgang, og varerne sorteres automatisk i firmaets varegrupper efter ByggeBasens inddeling. Ved siden af har firmaet sit eget prisbibliotek til egne ydelser og kalkulationer. Flere grossister er på vej.</p>
+
+
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Regnskab <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">e-conomic, uden at taste to gange</h2>
+			<p>Mesterplan er koblet til e-conomic. Kunder og produkter synkroniseres, fakturaer oprettes og bogføres i e-conomic, og betalinger registreres, så sagen ved, hvad der er betalt.</p>
+			<p>Opsætningen henter kladder, konti og produkter direkte fra e-conomic-aftalen, og hver bilagskategori, fx materialer, værktøj og underentreprenører, får sin egen konto. Dinero kan også forbindes.</p>
+
+			<div class="cs-shots">
+				<figure class="cs-shot wide">
+					<button type="button" aria-label="Forstør: e-conomic-opsætning"><img src="assets/images/cases/mesterplan-economic.jpg" alt="Indstillinger for e-conomic-bogføring i Mesterplan" loading="lazy"></button>
+					<figcaption><b>e-conomic-opsætning</b>Kladder, konti og produkter hentes fra e-conomic. Kontomapping pr. bilagskategori.</figcaption>
+				</figure>
+			</div>
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Løn <span class="cs-status rollout">Rulles ud</span></div>
+			<h2 class="cs-h">Timerne videre til Danløn</h2>
+			<p>Timerne er allerede registreret på sagerne, så de skal ikke tastes igen til lønnen. Mesterplan sender dem til Danløn som lønarter, med medarbejdere og lønkoder koblet sammen én gang for alle.</p>
+			<p>Danløn-integrationen er bygget og sættes nu i drift hos de første kunder. Zenegy, DataLøn og EG Lønservice er på vej.</p>
+
+
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Kvalitet og samarbejde <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">KS, KLS og underentreprenører</h2>
+			<p>Kvalitetssikringen ligger på sagen: tjeklister, afvigelser, udstyr og medarbejdernes kompetencer, med skabeloner til KLS.</p>
+			<p>Underentreprenører kan inviteres ind på én sag uden at se resten af firmaet, og mangler kan sendes ud via et link, der kan åbnes uden login.</p>
+
+
+		</section>
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">Åben platform <span class="cs-status live">I drift</span></div>
+			<h2 class="cs-h">Mesterplan i AI-assistenten</h2>
+			<p>Mesterplan har sin egen MCP-server. Det betyder, at en AI-assistent som Claude kan slå sager op, finde kunder og oprette projekter i Mesterplan på brugerens vegne, med de samme rettigheder som brugeren selv.</p>
+			<p>En kobling til vores værktøjssystem Trackrs er bygget og på vej, så værktøj og omkostninger fra Trackrs kan lande på den rigtige sag.</p>
+
+
 		</section>
 		<section class="cs-sec">
 			<div class="cs-eyebrow">Processen</div>
@@ -171,9 +253,9 @@
 			<p class="cs-pull">AI-tallene er vejledende, og det står der. En mester skal kunne stole på et tilbud.</p>
 			<div class="cs-steps">
 				<div class="cs-step"><div class="cs-step-n">1</div><div class="cs-step-b"><div class="cs-step-who">Pilotfirmaer</div><h3>Én ønskeliste ad gangen</h3><p>Pilotfirmaerne sender ønsker og fejl, og vi arbejder dem igennem punkt for punkt.</p></div></div>
-				<div class="cs-step"><div class="cs-step-n">2</div><div class="cs-step-b"><div class="cs-step-who">Integration</div><h3>Koblet på det, firmaet har</h3><p>e-conomic, Dinero og NemHandel, så fakturaer og bilag ikke skal tastes to gange.</p></div></div>
+				<div class="cs-step"><div class="cs-step-n">2</div><div class="cs-step-b"><div class="cs-step-who">Integration</div><h3>Koblet på det, firmaet har</h3><p>Grossist, regnskab og løn, så fakturaer, bilag og timer ikke skal tastes to gange.</p></div></div>
 				<div class="cs-step"><div class="cs-step-n">3</div><div class="cs-step-b"><div class="cs-step-who">AI</div><h3>AI, der viser sin usikkerhed</h3><p>Tegningsanalysen giver et tal og en sikkerhed, og mængderne skal efterses, før de går i et tilbud.</p></div></div>
-				<div class="cs-step"><div class="cs-step-n">4</div><div class="cs-step-b"><div class="cs-step-who">Åbning</div><h3>MCP-server</h3><p>Mesterplan kan bruges direkte fra AI-assistenter.</p></div></div>
+				<div class="cs-step"><div class="cs-step-n">4</div><div class="cs-step-b"><div class="cs-step-who">Drift</div><h3>Små, sikre skridt</h3><p>Nye funktioner går i drift bag et flag og tændes for én kunde ad gangen.</p></div></div>
 			</div>
 		</section>
 		<section class="cs-sec">
@@ -181,10 +263,11 @@
 			<h2 class="cs-h">Under motorhjelmen</h2>
 			<dl class="cs-stack">
 				<div><dt>Web</dt><dd>React 19, Vite, TypeScript</dd></div>
-				<div><dt>App</dt><dd>Expo / React Native</dd></div>
+				<div><dt>App</dt><dd>Expo / React Native, offline-kø</dd></div>
 				<div><dt>Backend</dt><dd>.NET, Azure Container Apps</dd></div>
-				<div><dt>E-faktura</dt><dd>NemHandel</dd></div>
-				<div><dt>Regnskab</dt><dd>e-conomic, Dinero</dd></div>
+				<div><dt>E-faktura</dt><dd>NemHandel via Sproom</dd></div>
+				<div><dt>Regnskab og løn</dt><dd>e-conomic, Dinero, Danløn</dd></div>
+				<div><dt>Priser</dt><dd>Bygma prisbog (CSV), ByggeBasen-varegrupper</dd></div>
 				<div><dt>AI</dt><dd>Tegningsanalyse, MCP-server</dd></div>
 			</dl>
 		</section>

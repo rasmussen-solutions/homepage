@@ -94,6 +94,24 @@
 #rs-case .cs-pending{border:2px dashed var(--rs-line);padding:30px;text-align:center;color:var(--rs-ink3);margin-top:22px;background:var(--rs-bg)}
 @media (prefers-reduced-motion: reduce){#rs-case .cs-shot button{transition:none}#rs-case .cs-shot button:hover{transform:none}}
 
+/* kapitler */
+#rs-case .cs-chapter .cs-shots{margin-top:26px}
+#rs-case .cs-chapter .cs-shot.wide{flex-basis:100%}
+#rs-case .cs-shot.panel{max-width:340px}
+#rs-case .cs-shot.panel img{border:1px solid var(--rs-line);border-radius:14px;box-shadow:0 18px 38px -24px rgba(0,36,126,.5)}
+#rs-case .cs-status{
+	display:inline-block;margin-left:8px;padding:2px 8px;border-radius:10px;
+	font-size:9.5px;letter-spacing:.1em;vertical-align:1px;
+}
+#rs-case .cs-status.live{background:#e4f2ea;color:#12704a}
+#rs-case .cs-status.rollout{background:var(--rs-blue-soft);color:var(--rs-blue)}
+#rs-case .cs-status.soon{background:var(--rs-line2);color:var(--rs-ink3)}
+#rs-case .cs-points{margin:4px 0 0;border:1px solid var(--rs-line);background:var(--rs-bg)}
+#rs-case .cs-points li{padding:12px 18px 12px 40px;border-bottom:1px solid var(--rs-line2);position:relative;font-size:.98rem;color:var(--rs-ink2);line-height:1.5}
+#rs-case .cs-points li:last-child{border-bottom:0}
+#rs-case .cs-points li:before{content:"";position:absolute;left:18px;top:1.25em;width:12px;height:2px;background:var(--rs-blue)}
+#rs-case .cs-points b{color:var(--rs-ink)}
+
 /* hvad vi byggede */
 #rs-case .cs-feat{display:flex;flex-wrap:wrap;border:1px solid var(--rs-line);border-bottom:0}
 #rs-case .cs-feat > div{flex:1 1 50%;padding:20px 22px;border-bottom:1px solid var(--rs-line)}
