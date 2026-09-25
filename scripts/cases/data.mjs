@@ -346,6 +346,10 @@ export const cases = [
 					'<b>Påmindelser</b> til medarbejdere, der mangler at svare, og til ansvarlige, hvis frist nærmer sig.',
 					'<b>Faste cyklusser</b>, så APV\'en bliver gentaget uden at nogen skal huske det.',
 				],
+				shots: [
+					{ src: 'intrahub-web-apv-liste.jpg', kind: 'wide', title: 'Projekt-APV\'er', caption: 'Én APV pr. byggeplads, med de AI-genererede markeret. Navne og adresser er anonymiseret.', alt: 'Liste over projekt-APV\'er i IntraHub' },
+					{ src: 'intrahub-web-handlingsplan.jpg', kind: 'wide', title: 'Handlingsplan', caption: 'Problemet, handlingen, en ansvarlig, en deadline og en, der følger op. Navne er sløret.', alt: 'Handlingsplan med ansvarlig, deadline og opfølgning' },
+				],
 			},
 			{
 				eyebrow: 'AI',
@@ -354,6 +358,9 @@ export const cases = [
 				body: [
 					'Det sværeste ved en APV er at stille de rigtige spørgsmål. IntraHub kan skrive dem med AI: ud fra virksomhedens profil og, hvis man vil, projektbeskrivelsen som Word-dokument, foreslår den spørgsmål i hver af de seks kategorier. Til byggeprojekter tager den udgangspunkt i Bygge- og anlægsbekendtgørelsen og PSS.',
 					'Forslagene tjekkes, før de vises, og virksomheden retter dem til, inden APV\'en sendes ud. Virksomheden bruger sin egen AI-nøgle, som gemmes krypteret.',
+				],
+				shots: [
+					{ src: 'intrahub-web-apv-ai.jpg', kind: 'wide', title: 'En AI-genereret APV', caption: 'Spørgsmål skrevet til facadearbejde på stillads: vejr, støv, høreværn og lys. Fra en rigtig APV, med projekt og navne anonymiseret.', alt: 'AI-genereret projekt-APV med spørgsmål om facadearbejde' },
 				],
 			},
 			{
