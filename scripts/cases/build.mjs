@@ -44,12 +44,30 @@ function shotsHtml(c) {
 	if (!c.shots.length) {
 		return `			<div class="cs-pending">Skærmbilleder følger.</div>`;
 	}
+	return figures(c.shots);
+}
+
+function figures(shots) {
 	return `			<div class="cs-shots">
-${c.shots.map(s => `				<figure class="cs-shot ${s.kind}">
+${shots.map(s => `				<figure class="cs-shot ${s.kind}">
 					<button type="button" aria-label="Forstør: ${esc(s.title)}"><img src="assets/images/cases/${esc(s.src)}" alt="${esc(s.alt)}" loading="lazy"></button>
 					<figcaption><b>${esc(s.title)}</b>${esc(s.caption)}</figcaption>
 				</figure>`).join('\n')}
 			</div>`;
+}
+
+// Kapitler: længere afsnit om ét område af produktet, med status og egne skærmbilleder.
+// status: 'live' | 'rollout' | 'soon' styrer farven på mærket.
+function chapters(c) {
+	if (!c.chapters) return '';
+	return c.chapters.map(ch => `
+		<section class="cs-sec cs-chapter">
+			<div class="cs-eyebrow">${esc(ch.eyebrow)}${ch.status ? ` <span class="cs-status ${ch.status[0]}">${esc(ch.status[1])}</span>` : ''}</div>
+			<h2 class="cs-h">${esc(ch.title)}</h2>
+${ch.body.map(p => `			<p>${p}</p>`).join('\n')}
+${ch.points ? `			<ul class="cs-points">\n${ch.points.map(p => `				<li>${p}</li>`).join('\n')}\n			</ul>` : ''}
+${ch.shots ? figures(ch.shots) : ''}
+		</section>`).join('');
 }
 
 function page(c) {
@@ -136,7 +154,7 @@ ${shotsHtml(c)}
 		</div>
 	</section>
 
-	<div class="cs-wrap">${features}${process}${stack}
+	<div class="cs-wrap">${chapters(c)}${features}${process}${stack}
 
 		<div class="cs-cta">
 			<h2>Har I brug for noget lignende?</h2>
