@@ -372,6 +372,7 @@ export const cases = [
 				],
 				shots: [
 					{ src: 'intrahub-web-dashboard.jpg', kind: 'wide', title: 'Administration på web', caption: 'Overblik over projekter, APV\'er, opslag og aktiviteter. Demo-virksomhed.', alt: 'IntraHubs web-dashboard for administratorer' },
+					{ src: 'intrahub-web-opslag.jpg', kind: 'wide', title: 'Opslag med svar', caption: 'Et opslag kan stille et spørgsmål, og IntraHub holder styr på, hvem der har svaret. Demo-virksomhed.', alt: 'Opslag i IntraHub med spørgsmål og svaroversigt' },
 				],
 			},
 			{
