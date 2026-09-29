@@ -348,7 +348,7 @@ export const cases = [
 				],
 				shots: [
 					{ src: 'intrahub-web-apv-liste.jpg', kind: 'wide', title: 'Projekt-APV\'er', caption: 'Én APV pr. byggeplads, med de AI-genererede markeret. Navne og adresser er anonymiseret.', alt: 'Liste over projekt-APV\'er i IntraHub' },
-					{ src: 'intrahub-web-handlingsplan.jpg', kind: 'wide', title: 'Handlingsplan', caption: 'Problemet, handlingen, en ansvarlig, en deadline og en, der følger op. Navne er sløret.', alt: 'Handlingsplan med ansvarlig, deadline og opfølgning' },
+					{ src: 'intrahub-web-handlingsplan.jpg', kind: 'wide', title: 'Handlingsplan', caption: 'Problemet, handlingen, en ansvarlig, en deadline og en, der følger op. Navnene er demo-navne.', alt: 'Handlingsplan med ansvarlig, deadline og opfølgning' },
 				],
 			},
 			{
