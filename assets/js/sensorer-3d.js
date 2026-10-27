@@ -139,6 +139,146 @@
     return {group:g,cam:[8,9,14],target:[0,-.3,0],tick:reduce?null:tick};
   }
 
+  const extra={
+    wood:M(0xc89b62,{roughness:.8}),concrete:M(0xbfc3c4,{roughness:.9}),blue:M(0x2f6fb5,{roughness:.5}),galv:M(0xb4bcc2,{metalness:.25,roughness:.45})
+  };
+  function ringsTex(){
+    const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');
+    x.fillStyle='#d9b07a';x.fillRect(0,0,256,256);x.strokeStyle='rgba(120,78,36,.55)';x.lineWidth=3;
+    for(let r=14;r<200;r+=16){x.beginPath();x.arc(60,230,r,0,Math.PI*2);x.stroke();}
+    return new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(c),roughness:.8});
+  }
+
+  /* Generator-log */
+  function buildGen(){
+    const g=new THREE.Group();
+    const frame=box(12.4,.6,6.4,mat.dark);frame.position.y=-3.3;g.add(frame);
+    g.add(rbox(12,6,6,.8,mat.grey));
+    for(let i=0;i<6;i++){const v=box(.25,3.6,.1,mat.dark);v.position.set(-5+i*.8,0,3.02);g.add(v);}
+    const panel=rbox(4.2,3.4,.6,.3,mat.dark);panel.position.set(3.2,.4,3.2);g.add(panel);
+    const scr=screen(['4.1 L/h','last 38%','tomgang 2t'],3.6,2.6);scr.position.set(3.2,.4,3.52);g.add(scr);
+    const cap=cyl(1,.7,mat.orange);cap.position.set(-3,3.3,0);g.add(cap);
+    const ant=cyl(.12,1.6,mat.dark,12);ant.position.set(-2.5,4.4,0);g.add(ant);
+    const ex=cyl(.35,2.2,mat.metal,16);ex.position.set(4.6,4,-1.6);g.add(ex);
+    [[-4,3.3],[-4,-3.3],[4,3.3],[4,-3.3]].forEach(([x,z])=>{const w=new THREE.Mesh(new THREE.CylinderGeometry(1.2,1.2,.7,24),mat.rubber);w.rotation.x=Math.PI/2;w.position.set(x,-3.7,z);g.add(w);});
+    const bar=box(4,.4,.4,mat.dark);bar.position.set(-8,-3.3,0);g.add(bar);
+    const led=new THREE.Mesh(new THREE.SphereGeometry(.18,12,12),mat.led);led.position.set(-3,3.75,.7);g.add(led);
+    g.add(shadow(12,-4.9));
+    return {group:g,cam:[11,7,24],target:[0,-.5,0]};
+  }
+
+  /* Fugt-søm */
+  function buildFugt(){
+    const g=new THREE.Group();
+    const end=ringsTex();
+    const beam=new THREE.Mesh(new THREE.BoxGeometry(16,4,4),[end,end,extra.wood,extra.wood,extra.wood,extra.wood]);g.add(beam);
+    const head=rbox(2.4,2.4,1,.6,mat.orange);head.rotation.x=-Math.PI/2;head.position.set(-3,2.5,0);g.add(head);
+    const led=new THREE.Mesh(new THREE.SphereGeometry(.18,12,12),mat.led);led.position.set(-2.4,3.02,.6);g.add(led);
+    const ex=new THREE.Group();ex.position.set(4,6,0);g.add(ex);
+    const h2=rbox(2.4,2.4,1,.6,mat.orange);h2.rotation.x=-Math.PI/2;ex.add(h2);
+    [-.6,.6].forEach(z=>{const p=cyl(.14,3,mat.metal,12);p.position.set(0,-2,z);ex.add(p);});
+    const l2=new THREE.Mesh(new THREE.SphereGeometry(.18,12,12),mat.led);l2.position.set(.6,.52,.6);ex.add(l2);
+    const guide=tube([[4,3.4,0],[4,2.2,0]],.04,mat.dark);g.add(guide);
+    g.add(shadow(11,-2.1));
+    return {group:g,cam:[9,7,19],target:[0,1.5,0]};
+  }
+
+  /* Byggetørring-tæller */
+  function buildTor(){
+    const g=new THREE.Group();
+    const dh=new THREE.Group();dh.position.x=-3;g.add(dh);
+    dh.add(rbox(6,8,4.4,.8,extra.blue));
+    const grill=rbox(4.6,4.6,.3,.4,mat.dark);grill.position.set(0,.6,2.2);dh.add(grill);
+    const fan=new THREE.Group();fan.position.set(0,.6,2.45);dh.add(fan);
+    const hub=cyl(.4,.2,mat.metal,16);hub.rotation.x=Math.PI/2;fan.add(hub);
+    for(let i=0;i<5;i++){const b=box(.5,1.8,.06,mat.metal);b.position.y=1;const p=new THREE.Group();p.rotation.z=i/5*Math.PI*2;b.rotation.y=.4;p.add(b);fan.add(p);}
+    const handle=tube([[-1.6,4,0],[-1.6,5,0],[1.6,5,0],[1.6,4,0]],.18,mat.dark);dh.add(handle);
+    const tag=rbox(1.6,.9,.3,.2,mat.orange);tag.position.set(-1.8,-3,2.25);dh.add(tag);
+    [-2,2].forEach(x=>{const w=new THREE.Mesh(new THREE.CylinderGeometry(.6,.6,.5,20),mat.rubber);w.rotation.x=Math.PI/2;w.position.set(x,-4.4,1.6);dh.add(w);});
+    const st=new THREE.Group();st.position.set(5.5,-1,0);g.add(st);
+    const pole=cyl(.12,6,mat.dark,12);pole.position.y=-1;st.add(pole);
+    const foot=cyl(1.2,.2,mat.dark);foot.position.y=-4;st.add(foot);
+    const sens=rbox(2.6,3.2,1,.4,mat.shell);sens.position.y=2.6;st.add(sens);
+    const band=box(2.62,.35,1.02,mat.orange);band.position.y=3.9;st.add(band);
+    const scr=screen(['RF 61%','14°C'],2,1.4);scr.position.set(0,2.4,.52);st.add(scr);
+    g.add(shadow(12,-5));
+    return {group:g,cam:[8,5,24],target:[1,-.5,0],tick:reduce?null:(t=>{fan.rotation.z=t*6;})};
+  }
+
+  /* Stillads-anker */
+  function buildStil(){
+    const g=new THREE.Group();
+    const wall=box(1.6,14,12,extra.concrete);wall.position.x=-6;g.add(wall);
+    [-4,4].forEach(z=>{const s=cyl(.3,14,extra.galv,16);s.position.set(3,0,z);g.add(s);});
+    [-4,0,4].forEach(y=>{const l=cyl(.3,8.6,extra.galv,16);l.rotation.x=Math.PI/2;l.position.set(3,y,0);g.add(l);});
+    const br=tube([[3,-4,-4],[3,4,4]],.25,extra.galv);g.add(br);
+    const tie=cyl(.25,8,extra.galv,16);tie.rotation.z=Math.PI/2;tie.position.set(-1.2,2,-4);g.add(tie);
+    const eye=new THREE.Mesh(new THREE.TorusGeometry(.5,.14,10,20),extra.galv);eye.rotation.y=Math.PI/2;eye.position.set(-5.1,2,-4);g.add(eye);
+    const cell=rbox(1.8,1.3,1.3,.3,mat.orange);cell.position.set(-1.6,2,-4);g.add(cell);
+    [[3,2,-4],[3,-4,-4],[3,0,-4],[3,4,-4],[3,-4,4],[3,0,4],[3,4,4]].forEach(p=>{const c=box(.8,.8,.8,mat.dark);c.position.set(...p);g.add(c);});
+    const node=rbox(2.6,3.2,1,.4,mat.shell);node.position.set(3,-1.6,5.2);g.add(node);
+    const scr=screen(['anker 3','2.4 kN','tilt 0.2°'],2,2.2);scr.position.set(3,-1.6,5.72);g.add(scr);
+    g.add(tube([[-1.6,2.6,-3.4],[0,3.4,0],[3,-0.1,5]],.06,mat.cable));
+    g.add(shadow(12,-7.2));
+    return {group:g,cam:[16,5,20],target:[-.5,0,0]};
+  }
+
+  /* Strø-sensorer */
+  function buildStro(){
+    const g=new THREE.Group();
+    const slab=box(18,.6,12,extra.concrete);slab.position.y=-.3;g.add(slab);
+    [[0,-6,18,.4],[0,6,18,.4]].forEach(([x,z,w,d])=>{const m=box(w,1.6,d,mat.grey);m.position.set(x,.8,z);g.add(m);});
+    [[-9,0],[9,0]].forEach(([x,z])=>{const m=box(.4,1.6,12,mat.grey);m.position.set(x,.8,z);g.add(m);});
+    const iw=[[-2,-3,.4,6],[4,2,10,.4],[-5.5,1,7,.4]];
+    iw.forEach(([x,z,w,d])=>{const m=box(w,1.6,d,mat.grey);m.position.set(x,.8,z);g.add(m);});
+    const pts=[[-6,-3],[1,-3.6],[6.5,-2.5],[-6,3.5],[1,4],[6,4.2]];
+    const pucks=pts.map(([x,z])=>{
+      const p=new THREE.Group();p.position.set(x,.05,z);g.add(p);
+      const b=cyl(.7,.3,mat.shell,24);b.position.y=.15;p.add(b);
+      const t=cyl(.5,.06,mat.orange,24);t.position.y=.33;p.add(t);
+      const l=new THREE.Mesh(new THREE.SphereGeometry(.12,10,10),mat.ledO);l.position.y=.4;p.add(l);
+      return p;
+    });
+    const links=[[0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5],[1,5]];
+    const lm=new THREE.LineDashedMaterial({color:0xe8641c,dashSize:.4,gapSize:.3});
+    links.forEach(([a,b])=>{const geo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(pts[a][0],.5,pts[a][1]),new THREE.Vector3(pts[b][0],.5,pts[b][1])]);const ln=new THREE.Line(geo,lm);ln.computeLineDistances();g.add(ln);});
+    const big=new THREE.Group();big.position.set(1,4.5,-3.6);g.add(big);
+    const bb=cyl(1.4,.6,mat.shell,32);big.add(bb);const bt=cyl(1,.08,mat.orange,32);bt.position.y=.34;big.add(bt);
+    g.add(tube([[1,3.9,-3.6],[1,.6,-3.6]],.03,mat.dark));
+    g.add(shadow(14,-.62));
+    return {group:g,cam:[11,15,17],target:[0,0,0],tick:reduce?null:(t=>{mat.ledO.emissiveIntensity=.4+.6*Math.abs(Math.sin(t*2));})};
+  }
+
+  /* CO2-kvittering */
+  function buildCo2(){
+    const g=new THREE.Group();
+    const c=document.createElement('canvas');c.width=360;c.height=720;const x=c.getContext('2d');
+    x.fillStyle='#ffffff';x.fillRect(0,0,360,700);
+    x.beginPath();x.moveTo(0,700);for(let i=0;i<=12;i++){x.lineTo(i*30,i%2?720:700);}x.lineTo(360,700);x.fill();
+    x.fillStyle='#272727';x.font='600 30px Menlo, Consolas, monospace';x.fillText('CO₂-KVITTERING',30,70);
+    x.font='22px Menlo, Consolas, monospace';x.fillStyle='#5a6270';x.fillText('Sag 2026-114 (eksempel)',30,108);
+    x.strokeStyle='#bbb';x.setLineDash([6,6]);x.beginPath();x.moveTo(30,135);x.lineTo(330,135);x.stroke();
+    const rows=[['El','4 120 kWh'],['Diesel','610 L'],['Varme','9 300 kWh'],['Kørsel','3 900 km']];
+    x.fillStyle='#272727';x.font='24px Menlo, Consolas, monospace';
+    rows.forEach((r,i)=>{x.fillText(r[0],30,190+i*52);x.textAlign='right';x.fillText(r[1],330,190+i*52);x.textAlign='left';});
+    x.setLineDash([]);x.strokeStyle='#272727';x.beginPath();x.moveTo(30,410);x.lineTo(330,410);x.stroke();
+    x.font='700 34px Menlo, Consolas, monospace';x.fillStyle='#e8641c';x.fillText('CO₂e',30,470);x.textAlign='right';x.fillText('6,8 t',330,470);x.textAlign='left';
+    x.font='20px Menlo, Consolas, monospace';x.fillStyle='#5a6270';x.fillText('målt, ikke beregnet',30,540);
+    const geo=new THREE.PlaneGeometry(5,10,1,40);const pos=geo.attributes.position;
+    for(let i=0;i<pos.count;i++){const y=pos.getY(i);pos.setZ(i,y>2?-.12*Math.pow(y-2,2):0);}
+    geo.computeVertexNormals();
+    const tex=new THREE.CanvasTexture(c);
+    const paper=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({map:tex,side:THREE.DoubleSide,roughness:.9,alphaTest:.5,transparent:true}));
+    paper.position.set(-3,4.4,0);g.add(paper);
+    const dev=rbox(7,2.2,4,.6,mat.dark);dev.position.set(-3,-1.4,0);g.add(dev);
+    const slot=box(5.4,.2,.3,M(0x0d1013));slot.position.set(-3,-.28,0);g.add(slot);
+    const band=box(7.02,.3,4.02,mat.orange);band.position.set(-3,-2.2,0);g.add(band);
+    const phases=[[2.2,0x0c5adb],[3.6,0xe8641c],[1.6,0x8d9399],[.9,0x2f6fb5]];
+    phases.forEach(([h,col],i)=>{const b=rbox(1.6,h,1.6,.2,M(col));b.position.set(3+i*2,-2.5+h/2,0);g.add(b);});
+    g.add(shadow(12,-2.6));
+    return {group:g,cam:[7,4,26],target:[1,2,0]};
+  }
+
   const viewers=[];
   function view(id,build){
     const canvas=document.getElementById(id);
@@ -165,7 +305,8 @@
     renderer.render(scene,cam);
     viewers.push(v);
   }
-  view('m1',buildTavle);view('m2',buildStik);view('m3',buildVarme);view('m4',buildPuls);
+  [['m1',buildTavle],['m2',buildStik],['m3',buildVarme],['m4',buildPuls],['m5',buildGen],['m6',buildFugt],['m7',buildTor],['m8',buildStil],['m9',buildStro],['m10',buildCo2]]
+    .forEach(([id,b])=>{if(document.getElementById(id))view(id,b);});
   const t0=performance.now();
   (function loop(){
     const t=(performance.now()-t0)/1000;

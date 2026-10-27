@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>Sensorer til byggepladsen — Rasmussen Solutions</title>
-	<meta name="description" content="Fire idéer til sensorer på byggepladsen som drejelige 3D-modeller: strøm pr. gruppe og pr. maskine, varmetab ved vinterforanstaltninger og driftstimer på maskiner uden stik.">
+	<meta name="description" content="Ti idéer til sensorer på byggepladsen som drejelige 3D-modeller: strøm, diesel, varmetab, fugt, stilladser, maskiner og målt CO₂ pr. sag.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -56,6 +56,9 @@
 #rs-sens .spec div{display:flex;flex-direction:column;gap:2px}
 #rs-sens .spec b{font-family:var(--rs-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--rs-orange)}
 #rs-sens .spec span{font-size:.97rem;color:var(--rs-ink2)}
+#rs-sens .sn-group{display:flex;flex-direction:column;gap:18px;margin-top:34px}
+#rs-sens .sn-ghead{display:flex;flex-direction:column;gap:4px;border-bottom:2px solid var(--rs-ink);padding-bottom:8px}
+#rs-sens .sn-ghead h2{font-size:1.75rem}
 #rs-sens .sn-closing{margin-top:36px;border-left:4px solid var(--rs-blue);background:var(--rs-soft);padding:22px 24px;display:flex;flex-direction:column;gap:8px}
 #rs-sens .sn-closing h2{font-size:1.75rem}
 #rs-sens .sn-closing p{max-width:70ch}
@@ -172,11 +175,13 @@
 		<div class="sn-top">
 			<div class="sn-eyebrow">Idéer · konceptmodeller</div>
 			<h2 class="sn-hero">Sensorer til byggepladsen</h2>
-			<p class="sn-lede">Vi har tænkt over, hvad en byggeplads kunne måle, som ingen måler i dag. Her er fire af de idéer, vi synes har mest potentiale. Tre handler om energi, én om maskiner. Alle fire sender data til samme platform, som vi allerede bruger til værktøjssporing i <a href="trackrs.html">Trackrs</a>. Modellerne er konceptskitser. Drej dem med musen eller fingeren.</p>
+			<p class="sn-lede">Vi har tænkt over, hvad en byggeplads kunne måle, som ingen måler i dag. Her er ti af idéerne, delt op efter hvad de måler. Alle sender data til samme platform, som vi allerede bruger til værktøjssporing i <a href="trackrs.html">Trackrs</a>. Modellerne er konceptskitser. Drej dem med musen eller fingeren.</p>
 		</div>
 
-		<div class="sn-list">
-			<article class="sn-dev">
+		<section class="sn-group">
+			<div class="sn-ghead"><div class="sn-eyebrow">Energi</div><h2>Strøm, diesel og varme</h2></div>
+			<div class="sn-list">
+				<article class="sn-dev">
 				<div class="stage"><span class="lbl">KONCEPTMODEL 01</span><span class="hint">træk for at dreje</span><canvas id="m1" aria-label="3D-model af Tavle-clip: DIN-skinne-modul med display og tre strømtænger om kablerne"></canvas></div>
 				<div class="txt">
 					<h3>Tavle-clip</h3>
@@ -189,8 +194,7 @@
 					</div>
 				</div>
 			</article>
-
-			<article class="sn-dev">
+				<article class="sn-dev">
 				<div class="stage"><span class="lbl">KONCEPTMODEL 02</span><span class="hint">træk for at dreje</span><canvas id="m2" aria-label="3D-model af Stikprop: rødt CEE-mellemstik med display, RFID-ring og et kabel med værktøjs-tag"></canvas></div>
 				<div class="txt">
 					<h3>Stikprop</h3>
@@ -203,9 +207,21 @@
 					</div>
 				</div>
 			</article>
-
-			<article class="sn-dev">
-				<div class="stage"><span class="lbl">KONCEPTMODEL 03</span><span class="hint">træk for at dreje</span><canvas id="m3" aria-label="3D-model af Varmetab-måler: gateway med antenne, en streng af temperaturfølere og en dørkontakt"></canvas></div>
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 03</span><span class="hint">træk for at dreje</span><canvas id="m5" aria-label="3D-model af Generator-log: generator på hjul med niveausensor i tanken og display"></canvas></div>
+				<div class="txt">
+					<h3>Generator-log</h3>
+					<p class="sub">Diesel ind, kWh ud</p>
+					<p>En niveausensor i tanken og en måler på udgangen af generatoren. Den viser brændstof pr. kWh, timer i tomgang, og om generatoren er for stor til opgaven.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>Brændstofniveau, motortimer, kW ud og position.</span></div>
+						<div><b>Potentiale</b><span>En generator, der kører på 15 % last hele ugen, bruger meget diesel pr. kWh. Data viser, om pladsen kunne klare sig med en mindre generator, et batteri eller nettet. Sensorerne findes allerede. Det nye er at samle dem med resten af pladsens energidata.</span></div>
+						<div><b>Mangler</b><span>Montering, der passer til forskellige generatorer og tanke.</span></div>
+					</div>
+				</div>
+			</article>
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 04</span><span class="hint">træk for at dreje</span><canvas id="m3" aria-label="3D-model af Varmetab-måler: gateway med antenne, en streng af temperaturfølere og en dørkontakt"></canvas></div>
 				<div class="txt">
 					<h3>Varmetab-måler</h3>
 					<p class="sub">Hvad koster vinterforanstaltningerne egentlig?</p>
@@ -217,9 +233,57 @@
 					</div>
 				</div>
 			</article>
-
-			<article class="sn-dev">
-				<div class="stage"><span class="lbl">KONCEPTMODEL 04</span><span class="hint">træk for at dreje</span><canvas id="m4" aria-label="3D-model af Maskin-puls: orange, robust tag monteret på en gul maskinplade med vibrationsringe"></canvas></div>
+			</div>
+		</section>
+		<section class="sn-group">
+			<div class="sn-ghead"><div class="sn-eyebrow">Fugt og udtørring</div><h2>Før væggen lukkes</h2></div>
+			<div class="sn-list">
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 05</span><span class="hint">træk for at dreje</span><canvas id="m6" aria-label="3D-model af Fugt-søm: orange sensor skruet ind i en træbjælke og en sensor vist med sine målestifter"></canvas></div>
+				<div class="txt">
+					<h3>Fugt-søm</h3>
+					<p class="sub">Fugtmåler til træ og afretningslag</p>
+					<p>En billig sensor, der skrues ind i spær, CLT eller afretningslag. Den giver grønt lys, før væggen lukkes, og gemmer dokumentation for, at konstruktionen var tør.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>Træfugt, relativ fugt og temperatur.</span></div>
+						<div><b>Potentiale</b><span>Fugt i lukkede konstruktioner giver skimmel og reklamationer. Med målinger fra hele byggeperioden kan man vise, at konstruktionen var tør, da den blev lukket.</span></div>
+						<div><b>Mangler</b><span>En billig sensor med lang batteritid og kalibrering mod forskellige træsorter.</span></div>
+					</div>
+				</div>
+			</article>
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 06</span><span class="hint">træk for at dreje</span><canvas id="m7" aria-label="3D-model af Byggetørring-tæller: blå affugter med tag og en rumsensor på stativ"></canvas></div>
+				<div class="txt">
+					<h3>Byggetørring-tæller</h3>
+					<p class="sub">Hvad koster det at tørre et rum?</p>
+					<p>Hver affugter og byggevarmer kobles til en sensor i rummet. Så kan man se, hvor hurtigt fugten falder pr. kWh, hvornår maskinen kan flyttes, og hvilke rum der tørrer dårligt.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>Relativ fugt, temperatur samt maskinernes kWh og driftstid.</span></div>
+						<div><b>Potentiale</b><span>Udtørring planlægges i dag ofte efter erfaring. Data giver en pris pr. m² og frigiver maskinerne hurtigere.</span></div>
+						<div><b>Mangler</b><span>Kobling mellem maskine og rum, f.eks. via Stikprop, og en model for forventet udtørringstid.</span></div>
+					</div>
+				</div>
+			</article>
+			</div>
+		</section>
+		<section class="sn-group">
+			<div class="sn-ghead"><div class="sn-eyebrow">Stillads og maskiner</div><h2>Det, der står og kører på pladsen</h2></div>
+			<div class="sn-list">
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 07</span><span class="hint">træk for at dreje</span><canvas id="m8" aria-label="3D-model af Stillads-anker: stillads forankret til en væg med en kraftmåler på ankeret og et display"></canvas></div>
+				<div class="txt">
+					<h3>Stillads-anker</h3>
+					<p class="sub">Belastning og hældning på stilladset</p>
+					<p>Kraftmålere på vægankrene og hældningssensorer på rammerne. De giver besked, når et anker er fjernet af et andet fag, når et net fanger vinden i en storm, eller når stilladset begynder at hælde.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>Kraft i ankrene, hældning og vind på net.</span></div>
+						<div><b>Potentiale</b><span>Stilladset bliver kontrolleret, når det stilles op, men ændrer sig undervejs. Løbende målinger viser, om det stadig er, som da det blev godkendt.</span></div>
+						<div><b>Mangler</b><span>Robuste kraftmålere, der passer til almindelige ankre, og grænseværdier fra stilladsleverandørerne.</span></div>
+					</div>
+				</div>
+			</article>
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 08</span><span class="hint">træk for at dreje</span><canvas id="m4" aria-label="3D-model af Maskin-puls: orange, robust tag monteret på en gul maskinplade med vibrationsringe"></canvas></div>
 				<div class="txt">
 					<h3>Maskin-puls</h3>
 					<p class="sub">Driftstimer på maskiner uden stik</p>
@@ -231,13 +295,39 @@
 					</div>
 				</div>
 			</article>
-		</div>
-
-		<div class="sn-closing">
-			<div class="sn-eyebrow">Det fælles datalag</div>
-			<h2>Fra målinger til CO₂ pr. sag</h2>
-			<p>Data fra de fire enheder kan lægges sammen med GPS-data fra køretøjer og maskiner. Så kan man lave en CO₂-opgørelse pr. sag, der er målt i stedet for beregnet ud fra standardtal.</p>
-		</div>
+			</div>
+		</section>
+		<section class="sn-group">
+			<div class="sn-ghead"><div class="sn-eyebrow">Hele pladsen</div><h2>Lag oven på de andre sensorer</h2></div>
+			<div class="sn-list">
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 09</span><span class="hint">træk for at dreje</span><canvas id="m9" aria-label="3D-model af Strø-sensorer: plantegning med små runde sensorer i hvert rum, forbundet i et netværk"></canvas></div>
+				<div class="txt">
+					<h3>Strø-sensorer</h3>
+					<p class="sub">Små sensorer, der selv finder deres plads</p>
+					<p>Sensorer på størrelse med en mønt, som lægges i hvert rum, efterhånden som etagerne bliver bygget. De finder selv deres position, taler sammen i et netværk og lægger temperatur, fugt og lys ind på bygningsmodellen. Ved aflevering samles de ind og genbruges.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>Temperatur, relativ fugt, lys og position.</span></div>
+						<div><b>Potentiale</b><span>Et levende klimakort over bygningen, mens den bliver bygget. Det kan bruges til udtørring, vinterforanstaltninger og dokumentation ved aflevering.</span></div>
+						<div><b>Mangler</b><span>Strømforbrug og pris pr. sensor, præcis positionering i betonbyggeri og kobling til BIM-modellen.</span></div>
+					</div>
+				</div>
+			</article>
+				<article class="sn-dev">
+				<div class="stage"><span class="lbl">KONCEPTMODEL 10</span><span class="hint">træk for at dreje</span><canvas id="m10" aria-label="3D-model af CO₂-kvittering: en kvittering med el, diesel, varme og kørsel omregnet til CO₂e og søjler for byggefaserne"></canvas></div>
+				<div class="txt">
+					<h3>Byggepladsens CO₂-kvittering</h3>
+					<p class="sub">Målt udledning pr. sag</p>
+					<p>Den her er software. Den lægger data fra Tavle-clip, generatorer, varmetab og køretøjernes GPS sammen til en kvittering for hver sag, fordelt på byggefaser. Tallene i modellen er et eksempel.</p>
+					<div class="spec">
+						<div><b>Måler</b><span>El, diesel, varme og kørsel omregnet til CO₂e.</span></div>
+						<div><b>Potentiale</b><span>Klimaberegninger for byggeri bruger i dag standardtal for selve byggeprocessen. Kvitteringen gør det muligt at måle den i stedet.</span></div>
+						<div><b>Mangler</b><span>Emissionsfaktorer og en opgørelsesmetode, der kan bruges i en LCA.</span></div>
+					</div>
+				</div>
+			</article>
+			</div>
+		</section>
 
 		<p class="sn-foot">Konceptmodeller, ikke færdige produkter. Pris, målenøjagtighed og certificering er ikke afklaret endnu. Er du interesseret i at være med til at teste eller udvikle dem, så skriv til <a href="mailto:Emil@Rasmussen-Solutions.dk">Emil@Rasmussen-Solutions.dk</a>.</p>
 	</div>
