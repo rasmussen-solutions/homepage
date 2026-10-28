@@ -125,6 +125,7 @@ ${c.draft ? '	<meta name="robots" content="noindex">\n' : ''}	<link rel="canonic
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
 	<link rel="stylesheet" type="text/css" href="assets/css/case.css">
+	<script defer src="assets/js/rs.js" data-site="rasmussen-solutions.dk"></script>
 </head>
 <body>
 ${header}
