@@ -24,6 +24,7 @@ const satser = readFileSync(join(root, 'satser.html'), 'utf8');
 const header = slice(satser, '<div class="em40_header_area_main">', '<div class="breadcumb-area">').trimEnd();
 const footer = slice(satser, '<div class="witrfm_area">', '<script').trimEnd();
 
+const LOGO = 640; // kun formatet (1:1) tæller her; CSS sætter den viste størrelse
 const pages = cases.filter(c => !c.external);
 
 function neighbours(c) {
@@ -132,7 +133,7 @@ ${header}
 <div id="rs-case">
 	<header class="cs-hero">
 		<div class="cs-wide cs-hero-in">
-			<div class="cs-logo"><img src="assets/images/${esc(c.thumb)}" alt="${esc(c.name)} logo"></div>
+			<div class="cs-logo"><picture><source srcset="assets/images/${esc(c.thumb.replace(/\.png$/, '.webp'))}" type="image/webp"><img src="assets/images/${esc(c.thumb)}" alt="${esc(c.name)} logo" width="${LOGO}" height="${LOGO}" fetchpriority="high"></picture></div>
 			<div>
 				<div class="cs-crumbs"><a href="index.html">Forside</a> / <a href="index.html#project">Projekter</a> / ${esc(c.name)}</div>
 				<h1>${esc(c.name)}</h1>
@@ -174,12 +175,12 @@ ${shotsHtml(c)}
 
 ${footer}
 
-<script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/theme-pluginjs.js"></script>
-<script src="assets/js/jquery.meanmenu.js"></script>
-<script src="assets/js/theme.js"></script>
-<script src="assets/js/case.js"></script>
+<script defer src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+<script defer src="assets/js/bootstrap.min.js"></script>
+<script defer src="assets/js/theme-pluginjs.js"></script>
+<script defer src="assets/js/jquery.meanmenu.js"></script>
+<script defer src="assets/js/theme.js"></script>
+<script defer src="assets/js/case.js"></script>
 </body>
 </html>
 `;
