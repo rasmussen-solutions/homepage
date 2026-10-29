@@ -32,7 +32,15 @@
     var el = ev.target && ev.target.closest ? ev.target.closest('a,[data-rs]') : null;
     if (!el) return;
     var tag = el.getAttribute('data-rs');
-    if (tag) return send('cta_click', { label: tag });
+    if (tag) {
+      var a = el.getAttribute('href') !== null ? el : (el.closest ? el.closest('a[href]') : null);
+      var ah = a ? a.getAttribute('href') || '' : '', au;
+      if (ah && ah.charAt(0) !== '#') {
+        try { au = new URL(ah, loc.href); } catch (x) {}
+      }
+      if (au && /^https?:$/.test(au.protocol)) return send('cta_click', { label: tag, href: au.pathname });
+      return send('cta_click', { label: tag });
+    }
     var href = el.getAttribute('href') || '';
     if (/^mailto:/i.test(href)) return send('outbound', { target_host: 'mailto' });
     if (/^tel:/i.test(href)) return send('outbound', { target_host: 'tel' });
@@ -40,8 +48,20 @@
     try { u = new URL(href, loc.href); } catch (x) { return; }
     if (/\/signup/.test(u.pathname)) return send('cta_click', { label: (el.textContent || '').trim().slice(0, 60), href: u.pathname });
     if (/\/login/.test(u.pathname)) return send('cta_click', { label: 'login' });
+    if (u.hostname === 'apps.apple.com') return send('cta_click', { label: 'app_store' });
+    if (u.hostname === 'play.google.com') return send('cta_click', { label: 'play_store' });
     if (u.hostname !== host && /^https?:$/.test(u.protocol)) send('outbound', { target_host: u.hostname });
   }, true);
+
+  var started = [];
+  function formStart(ev) {
+    var f = ev.target && ev.target.closest ? ev.target.closest('form') : null;
+    if (!f || started.indexOf(f) >= 0) return;
+    started.push(f);
+    send('form_start', { form: (f.id || f.getAttribute('name') || '').slice(0, 60) });
+  }
+  d.addEventListener('focusin', formStart, true);
+  d.addEventListener('input', formStart, true);
 
   d.addEventListener('submit', function (ev) {
     var f = ev.target;
