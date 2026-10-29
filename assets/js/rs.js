@@ -1,4 +1,4 @@
-/* rs.js - cookieless visitor analytics. Contract: products/site-analytics/README.md. Keep byte-identical in every wwwroot. */
+/* rs.js - cookieless visitor analytics. Contract: tools/site-analytics/README.md. Keep byte-identical in every wwwroot. */
 (function (w, d) {
   var n = w.navigator, dnt = n.doNotTrack || w.doNotTrack || n.msDoNotTrack;
   if (n.globalPrivacyControl || dnt === '1' || dnt === 'yes') return;
