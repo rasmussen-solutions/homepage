@@ -38,6 +38,29 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+      # GitHub sometimes takes seconds (up to ~1 min) before a freshly uploaded
+      # artifact is listed, so the first deploy can fail with
+      # 'No artifacts named "github-pages"' (actions/deploy-pages#451).
+      # Retry the deploy after a wait; re-running the whole job does not help.
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deploy1
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+      - name: Wait before retry
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 30
+      - name: Deploy to GitHub Pages (retry 1)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Wait before last retry
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 60
+      - name: Deploy to GitHub Pages (retry 2)
+        id: deploy3
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+      - name: Page URL
+        id: deployment
+        run: echo "page_url=${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}" >> "$GITHUB_OUTPUT"
